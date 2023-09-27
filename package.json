@@ -11,15 +11,16 @@
     "react-router-dom": "^6.16.0",
     "react-scripts": "^5.0.1"
   },
-  "name": "project-guess",
-  "description": "Project Guess!",
+  "name": "Project-Guess",
+  "description": "",
   "version": "1.0.0",
-  "main": "index.html",
+  "main": "server/server.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "node server/server.js --ignore client",
+    "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
+    "install": "cd server && npm i && cd ../client && npm i",
+    "seed": "cd server && npm run seed",
+    "build": "cd client && npm run build"
   },
   "repository": {
     "type": "git",
@@ -30,5 +31,9 @@
   "bugs": {
     "url": "https://github.com/kmarie0420/Project-Guess/issues"
   },
-  "homepage": "https://github.com/kmarie0420/Project-Guess#readme"
+  "homepage": "https://github.com/kmarie0420/Project-Guess#readme",
+  "devDependencies": {
+    "css-loader": "^6.8.1",
+    "style-loader": "^3.3.3"
+  }
 }

@@ -1,21 +1,22 @@
 import React from 'react';
 import './Header.css';
+import { Button, DatePicker } from 'antd';
 
 const Header = () => {
   return (
     <header className="app-header">
       <div className="logo">
-        Rememories
+        Re-memories
       </div>
       <ul className="menu">
         <li key="home">
-          <a href="/">Home</a>
+        <Button type="primary">Home</Button>
         </li>
         <li key="login">
-          <a href="/login">Login</a>
+        <Button type="primary">Login</Button>
         </li>
         <li key="register">
-          <a href="/register">Register</a>
+        <Button type="primary">Register</Button>
         </li>
       </ul>
     </header>

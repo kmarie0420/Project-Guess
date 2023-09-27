@@ -19,6 +19,7 @@
 
 .menu li {
     margin: 0 10px;
+    background-color: transparent;
 }
 
 .menu a {
@@ -28,4 +29,9 @@
 
 .menu a:hover {
     text-decoration: underline;
+}
+
+.menu li button {
+    background-color: burlywood;
+    color: black;
 }
