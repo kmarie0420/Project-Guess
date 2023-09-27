@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const db = require('../config/connection');
 
 const userSeeds = require('./userSeeds');
-const capsuleSeeds = require('./capsuleSeeds');
+//const capsuleSeeds = require('./capsuleSeeds');
 
 db.once('open', async () => {
   try {
