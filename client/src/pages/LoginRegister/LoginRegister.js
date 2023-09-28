@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Form, Input, Button, Row, Col, Card, Typography, message } from 'antd';
-
 const { Title } = Typography;
+import './LoginRegister.css';
+import LoginRegister from './pages/LoginRegister/LoginRegister';
 
 const Login = () => {
   const [loading, setLoading] = useState(false);

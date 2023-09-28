@@ -6,7 +6,7 @@ import './App.css';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Landing from './pages/Landing/Landing';
-// import LoginRegister from './pages/LoginRegister/LoginRegister';
+import LoginRegister from './pages/LoginRegister/LoginRegister.js';
 
 function App() {
   const [loginModalVisible, setLoginModalVisible] = useState(false);
