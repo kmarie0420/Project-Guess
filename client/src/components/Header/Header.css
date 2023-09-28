@@ -3,7 +3,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px 50px;
-    background-color: #fff;
+    background-color: #fcfafa;
     box-shadow: 0 2px 8px #f0f1f2;
 }
 
@@ -11,6 +11,13 @@
     font-size: 24px;
     font-weight: bold;
     color: #333;
+    display: flex;        
+    align-items: center;  
+}
+
+.logo-text {
+    position: relative;
+    top: 10px;
 }
 .menu {
     list-style-type: none;
@@ -23,9 +30,40 @@
 
 .menu a {
     text-decoration: none;
-    color: #333;
+    color: #030303;
 }
 
 .menu a:hover {
     text-decoration: underline;
+}
+
+.menu-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    font-size: 24px;
+}
+
+@media screen and (max-width: 768px) {
+    .menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        right: 10px;
+        background-color: #ffffff;
+        width: 150px;
+        z-index: 3;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+    }
+    
+    .menu.active {
+        display: flex;
+    }
+    
+    .menu-toggle {
+        display: block;
+        transition: 0.3s ease;
+    }
 }

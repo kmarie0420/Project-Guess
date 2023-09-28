@@ -4,15 +4,13 @@ body, h1, h2, h3, p, ul, li {
   }
   
   body {
-    background-color: #f5f5dc; 
-    color: #5a5a5a; 
+    background-color: #f1f7d4; 
+    color: #181717; 
     font-family: 'Courier New', Courier, monospace; 
     line-height: 1.6;
   }
   
   header {
-    background: #8b4513; 
-    color: #fff;
     padding: 1rem;
     text-align: center;
   }
@@ -23,7 +21,7 @@ body, h1, h2, h3, p, ul, li {
   
   footer {
     background: #8b4513; 
-    color: #fff;
+    color: #f3ebeb;
     text-align: center;
     padding: 1rem;
     position: fixed;
@@ -48,8 +46,8 @@ body, h1, h2, h3, p, ul, li {
   }
   
   button:hover {
-    background-color: #8b4513;
-    color: white;
+    background-color: #000000;
+    color: rgb(255, 253, 253);
   }
   
 
@@ -68,6 +66,3 @@ body, h1, h2, h3, p, ul, li {
     flex: 1;
     padding: 20px;
 }
-
-
-  
