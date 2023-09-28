@@ -9,6 +9,8 @@ const Login = ({ visible, onClose }) => {
   const onFinish = (values) => {
     setLoading(true);
 
+    console.log('Form values:', values); // Add this line for debugging
+
     setTimeout(() => {
       setLoading(false);
 
