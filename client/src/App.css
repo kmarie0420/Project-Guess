@@ -58,5 +58,16 @@ body, h1, h2, h3, p, ul, li {
     border-radius: 5px;
   }
   
+  .App {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.app-content {
+    flex: 1;
+    padding: 20px;
+}
+
 
   
