@@ -1,5 +1,77 @@
 .landing {
-    text-align: center;
-    padding: 20px;
+  text-align: center;
+  padding: 20px;
+  position: relative;
+  height: 700px;
+  overflow: hidden;
+}
+
+.greeting-text {
+  opacity: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform 0.5s ease-out;
+}
+
+.greeting-text.flipGreeting {
+  transform: translate(-50%, -50%) rotateY(90deg);
+}
+
+.image-active {
+  background-image: url('/public/assets/images/joe-hu-yPyV4GK5bLQ-unsplash.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  transform: rotateY(90deg);
+  transition: transform 0.5s ease-out;
+}
+
+.image-active.showImage {
+  transform: rotateY(0deg);
+}
+
+.overlay-text {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%) translateY(100%);
+  transition: transform 1.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 10px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  opacity: 0;
+  filter: blur(8px);
+  z-index: 2;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.overlay-text.paragraph {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+  filter: blur(0px);
+}
+
+.image-active.paragraph {
+  transform: rotateY(0deg);
+}
+
+
+@media screen and (max-width: 768px) {
+  .landing {
+      height: 500px;
   }
 
+  .overlay-text {
+      font-size: 14px;
+      bottom: 5%;
+  }
+}
