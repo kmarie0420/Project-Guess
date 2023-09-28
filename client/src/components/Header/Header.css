@@ -26,6 +26,7 @@
 
 .menu li {
     margin: 0 10px;
+    background-color: transparent;
 }
 
 .menu a {
@@ -36,7 +37,6 @@
 .menu a:hover {
     text-decoration: underline;
 }
-
 .menu-toggle {
     display: none;
     background: transparent;
@@ -57,11 +57,11 @@
         box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
         border-radius: 5px;
     }
-    
+
     .menu.active {
         display: flex;
     }
-    
+
     .menu-toggle {
         display: block;
         transition: 0.3s ease;

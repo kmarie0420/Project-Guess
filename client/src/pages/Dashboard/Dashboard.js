@@ -1,5 +1,7 @@
 import React from "react";
 import "./Dashboard.css";
+import 'antd/dist/antd.css';
+import { Button, DatePicker } from 'antd';
 
 const Dashboard = ({ capsules, onCapsuleClick }) => {
   return (
@@ -13,7 +15,8 @@ const Dashboard = ({ capsules, onCapsuleClick }) => {
         ))}
       </ul>
       {/* Option to create a new capsule */}
-      <button>Create New Capsule</button>
+      <Button type="primary">Create New Capsule</Button>
+      <DatePicker />
     </div>
   );
 };

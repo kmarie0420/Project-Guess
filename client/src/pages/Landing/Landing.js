@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Typography } from 'antd';
 import './Landing.css';
+import { Image } from 'antd';
+
 
 const { Title, Paragraph } = Typography;
 
