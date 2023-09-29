@@ -1,4 +1,7 @@
 const { User, Capsule } = require('../models');
+const { AuthenticationError } = require('apollo-server-express');
+const { signToken } = require('../middleware/auth');
+
 const resolvers = {
   Query: {
     getTimeCapsules: async () => {
@@ -7,6 +10,7 @@ const resolvers = {
     getTimeCapsule: async (parent, { id }) => {
       return await Capsule.findById(id);
     },
+   
   },
   Mutation: {
     createCapsule: async (parent, { input }) => {
@@ -26,7 +30,14 @@ const resolvers = {
       const capsule = await Capsule.findById(id);
       return capsule;
     },
+    registerUser: async (parent, { username, email, password }) => {
+      const user = await User.create({ username, email, password });
+      const token = signToken(user);
+      return { token, user };
+    },
+  
   },
 };
+
 console.log('resolvers loaded');
 module.exports = resolvers;

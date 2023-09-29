@@ -1,19 +1,13 @@
 import React, { useState } from 'react';
 import { Form, Input, Button, Modal, Typography, message } from 'antd';
-
 const { Title } = Typography;
-
 const Login = ({ visible, onClose }) => {
   const [loading, setLoading] = useState(false);
-
   const onFinish = (values) => {
     setLoading(true);
-
     console.log('Form values:', values); // Add this line for debugging
-
     setTimeout(() => {
       setLoading(false);
-
       if (values.username === 'user' && values.password === 'password') {
         message.success('Login successful');
         onClose();
@@ -22,10 +16,9 @@ const Login = ({ visible, onClose }) => {
       }
     }, 1000);
   };
-
   return (
-    <Modal 
-      title={<Title level={3}>Sign In</Title>} 
+    <Modal
+      title={<Title level={3}>Sign In</Title>}
       open={visible}
       onCancel={onClose}
       footer={null}
@@ -55,5 +48,4 @@ const Login = ({ visible, onClose }) => {
     </Modal>
   );
 };
-
 export default Login;
