@@ -1,6 +1,6 @@
 import React from "react";
 import "./Dashboard.css";
-import 'antd/dist/antd.css';
+// import 'antd/dist/antd.css';
 import { Button, DatePicker } from 'antd';
 
 const Dashboard = ({ capsules, onCapsuleClick }) => {
