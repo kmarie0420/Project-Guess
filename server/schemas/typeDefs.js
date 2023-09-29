@@ -1,4 +1,5 @@
 const { gql } = require('apollo-server-express');
+
 const typeDefs = gql`
   type User {
     _id: ID
@@ -15,6 +16,8 @@ const typeDefs = gql`
     getTimeCapsule(id: ID!): Capsule
   }
   type Mutation {
+    login(username: String!, password: String!): User
+    registerUser(username: String!, email: String!, password: String!): User
     createCapsule(input: CapsuleInput): Capsule
     updateCapsule(id: ID!, input: CapsuleInput): Capsule
     deleteCapsule(id: ID!): Capsule
