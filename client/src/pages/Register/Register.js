@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Form, Input, Button, Modal, Typography, message } from 'antd';
+
 const { Title } = Typography;
 const Register = ({ onClose }) => {
   const [loading, setLoading] = useState(false);
+
   const onFinish = (values) => {
     setLoading(true);
     console.log('Form values:', values); // Add this line for debugging
@@ -12,13 +14,27 @@ const Register = ({ onClose }) => {
       // Simulation of a registration request. Authentication for registration data will be added later
       message.success('Registration successful');
       //route to dashboard
+
+
+  const onFinish = (values) => {
+    setLoading(true);
+
+    console.log('Form values:', values); // Add this line for debugging
+
+    // Simulation of a registration request will be replaced with actual registration logic later
+    setTimeout(() => {
+      setLoading(false);
+
+      // Simulation of a registration request. Authentication for registration data will be added later
+      message.success('Registration successful');
+
       onClose();
     }, 1000);
   };
   return (
-    <Modal
-      title={<Title level={3}>Register</Title>}
-      open={true}
+    <Modal 
+      title={<Title level={3}>Register</Title>} 
+      open={true} 
       onCancel={onClose}
       footer={null}
       centered
@@ -31,6 +47,10 @@ const Register = ({ onClose }) => {
         >
           <Input placeholder="Username" />
         </Form.Item>
+
+
+        
+
         <Form.Item
           name="email"
           label="Email"
@@ -38,6 +58,7 @@ const Register = ({ onClose }) => {
         >
           <Input placeholder="Email" />
         </Form.Item>
+
         <Form.Item
           name="password"
           label="Password"
@@ -45,6 +66,7 @@ const Register = ({ onClose }) => {
         >
           <Input.Password placeholder="Password" />
         </Form.Item>
+
         <Form.Item
           name="confirmPassword"
           label="Confirm Password"
@@ -63,6 +85,7 @@ const Register = ({ onClose }) => {
         >
           <Input.Password placeholder="Confirm Password" />
         </Form.Item>
+
         <Form.Item>
           <Button type="primary" htmlType="submit" loading={loading}>
             Register
@@ -72,4 +95,8 @@ const Register = ({ onClose }) => {
     </Modal>
   );
 };
+
+
 export default Register;
+
+

@@ -8,6 +8,7 @@ import Footer from './components/Footer/Footer';
 import Landing from './pages/Landing/Landing';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
+import Dashboard from './pages/Dashboard/Dashboard';
 
 function App() {
   const [loginModalVisible, setLoginModalVisible] = useState(false);
@@ -24,6 +25,7 @@ function App() {
         <main className="app-content">
           <Routes>
             <Route path="/" element={<Landing />} />
+            <Route path="/" element={<Dashboard/>} /> 
           </Routes>
         </main>
 
