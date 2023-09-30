@@ -1,5 +1,6 @@
 const { User, Capsule } = require('../models');
 const { AuthenticationError } = require("apollo-server-express");
+// const { signToken } = require('../middleware/auth');
 
 const resolvers = {
   Query: {
@@ -30,7 +31,7 @@ const resolvers = {
       return user;
     },
     registerUser: async (parent, { username, email, password }) => {
-      console.log(username, email, password); // For debugging purposes
+      console.log(username, email, password);
       const user = new User({ username, email, password });
       await user.save();
       return user;
