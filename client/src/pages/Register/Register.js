@@ -9,6 +9,7 @@ const Register = ({ onClose }) => {
   const [loading, setLoading] = useState(false);
   const [registerUser, { error }] = useMutation(REGISTER_USER);
 
+
   const onFinish = async (values) => {
     setLoading(true);
 
@@ -34,7 +35,7 @@ const Register = ({ onClose }) => {
       setLoading(false);
     }
   };
-
+  
   return (
     <Modal 
       title={<Title level={3}>Register</Title>} 
@@ -51,7 +52,7 @@ const Register = ({ onClose }) => {
         >
           <Input placeholder="Username" />
         </Form.Item>
-        
+
         <Form.Item
           name="email"
           label="Email"
