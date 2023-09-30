@@ -1,6 +1,7 @@
+const { jwtSecret } = require('../config/config'); 
 const { User, Capsule } = require('../models');
 const { AuthenticationError } = require("apollo-server-express");
-// const { signToken } = require('../middleware/auth');
+const jwt = require('jsonwebtoken');
 
 const resolvers = {
   Query: {
@@ -15,24 +16,21 @@ const resolvers = {
   Mutation: {
     login: async (parent, { username, password }) => {
       const user = await User.findOne({ username });
-    
       if (!user) {
         throw new AuthenticationError('Invalid username or password');
       }
     
       const validPassword = await user.isCorrectPassword(password);
-      
       if (!validPassword) {
         throw new AuthenticationError('Invalid username or password');
       }
     
-      // session or token logic.
-      // const token = signToken(user);
-      // return { token, user };
-      return user;
+      const token = jwt.sign({ id: user._id, username: user.username }, jwtSecret, { expiresIn: '24h' }); // <-- use jwtSecret here
+
+      return { token, user };
     },
     registerUser: async (parent, { username, email, password }) => {
-      console.log(username, email, password); // For debugging purposes
+      console.log(username, email, password); 
       const user = new User({ username, email, password });
       await user.save();
       return user;
