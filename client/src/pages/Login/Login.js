@@ -4,6 +4,7 @@ import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../../utils/mutations';
 
 const { Title } = Typography;
+
 const Login = ({ visible, onClose }) => {
   const [loading, setLoading] = useState(false);
   const [login] = useMutation(LOGIN_USER);
@@ -27,9 +28,10 @@ const Login = ({ visible, onClose }) => {
       setLoading(false);
     }
   };
+
   return (
-    <Modal
-      title={<Title level={3}>Sign In</Title>}
+    <Modal 
+      title={<Title level={3}>Sign In</Title>} 
       open={visible}
       onCancel={onClose}
       footer={null}
@@ -59,4 +61,5 @@ const Login = ({ visible, onClose }) => {
     </Modal>
   );
 };
+
 export default Login;

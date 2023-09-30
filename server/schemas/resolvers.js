@@ -1,6 +1,6 @@
 const { User, Capsule } = require('../models');
-const { AuthenticationError } = require('apollo-server-express');
-const { signToken } = require('../middleware/auth');
+const { AuthenticationError } = require("apollo-server-express");
+// const { signToken } = require('../middleware/auth');
 
 const resolvers = {
   Query: {
@@ -32,7 +32,7 @@ const resolvers = {
       return user;
     },
     registerUser: async (parent, { username, email, password }) => {
-      console.log(username, email, password);
+      console.log(username, email, password); // For debugging purposes
       const user = new User({ username, email, password });
       await user.save();
       return user;
@@ -54,11 +54,11 @@ const resolvers = {
       const capsule = await Capsule.findById(id);
       return capsule;
     },
-    registerUser: async (parent, { username, email, password }) => {
-      const user = await User.create({ username, email, password });
-      const token = signToken(user);
-      return { token, user };
-    },
+    // registerUser: async (parent, { username, email, password }) => {
+    //   const user = await User.create({ username, email, password });
+    //   const token = signToken(user);
+    //   return { token, user };
+    // },
   
   },
 };

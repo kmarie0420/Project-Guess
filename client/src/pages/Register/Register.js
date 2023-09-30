@@ -9,7 +9,8 @@ const Register = ({ onClose }) => {
   const [loading, setLoading] = useState(false);
   const [registerUser, { error }] = useMutation(REGISTER_USER);
 
-  const onFinish = (values) => {
+
+  const onFinish = async (values) => {
     setLoading(true);
 
     console.log('Form values:', values);
@@ -97,7 +98,4 @@ const Register = ({ onClose }) => {
   );
 };
 
-
 export default Register;
-
-
