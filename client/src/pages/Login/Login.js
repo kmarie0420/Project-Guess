@@ -1,24 +1,37 @@
 import React, { useState } from 'react';
 import { Form, Input, Button, Modal, Typography, message } from 'antd';
+import { useMutation } from '@apollo/client';
+import { LOGIN_USER } from '../../utils/mutations';
+
 const { Title } = Typography;
+
 const Login = ({ visible, onClose }) => {
   const [loading, setLoading] = useState(false);
-  const onFinish = (values) => {
+  const [login] = useMutation(LOGIN_USER);
+
+  const onFinish = async (values) => {
     setLoading(true);
-    console.log('Form values:', values); // Add this line for debugging
-    setTimeout(() => {
-      setLoading(false);
-      if (values.username === 'user' && values.password === 'password') {
+    console.log('Form values:', values);
+    try {
+      const { data } = await login({ variables: { ...values } });
+
+      if (data.login) {
         message.success('Login successful');
         onClose();
       } else {
         message.error('Invalid username or password');
       }
-    }, 1000);
+    } catch (error) {
+      console.error("Authentication Error:", error);
+      message.error('Invalid username or password');
+    } finally {
+      setLoading(false);
+    }
   };
+
   return (
-    <Modal
-      title={<Title level={3}>Sign In</Title>}
+    <Modal 
+      title={<Title level={3}>Sign In</Title>} 
       open={visible}
       onCancel={onClose}
       footer={null}
@@ -48,4 +61,5 @@ const Login = ({ visible, onClose }) => {
     </Modal>
   );
 };
+
 export default Login;

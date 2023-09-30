@@ -54,11 +54,11 @@ const resolvers = {
       const capsule = await Capsule.findById(id);
       return capsule;
     },
-    registerUser: async (parent, { username, email, password }) => {
-      const user = await User.create({ username, email, password });
-      const token = signToken(user);
-      return { token, user };
-    },
+    // registerUser: async (parent, { username, email, password }) => {
+    //   const user = await User.create({ username, email, password });
+    //   const token = signToken(user);
+    //   return { token, user };
+    // },
   
   },
 };
