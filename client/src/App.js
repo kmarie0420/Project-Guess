@@ -30,13 +30,13 @@ function App() {
         </main>
 
         <Login 
-          visible={loginModalVisible} 
-          onClose={() => setLoginModalVisible(false)} 
-        />
+  visible={loginModalVisible} 
+  onClose={() => setLoginModalVisible(false)} 
+/>
 
-        {registerModalVisible && (
-          <Register onClose={() => setRegisterModalVisible(false)} />
-        )}
+{registerModalVisible && (
+  <Register open={registerModalVisible} onClose={() => setRegisterModalVisible(false)} />
+)}
 
         <Footer />
       </div>

@@ -1,40 +1,36 @@
 import React, { useState } from 'react';
 import { Form, Input, Button, Modal, Typography, message } from 'antd';
-import { useMutation } from "@apollo/client";
-import { REGISTER_USER } from '../../utils/mutations';
-// import Auth from "../utils/auth";
 
 const { Title } = Typography;
 const Register = ({ onClose }) => {
   const [loading, setLoading] = useState(false);
-  const [registerUser, { error }] = useMutation(REGISTER_USER);
 
-  const onFinish = async (values) => {
+  const onFinish = (values) => {
+    setLoading(true);
+    console.log('Form values:', values); // Add this line for debugging
+    // Simulation of a registration request will be replaced with actual registration logic later
+    setTimeout(() => {
+      setLoading(false);
+      // Simulation of a registration request. Authentication for registration data will be added later
+      message.success('Registration successful');
+      //route to dashboard
+
+
+  const onFinish = (values) => {
     setLoading(true);
 
-    console.log('Form values:', values);
+    console.log('Form values:', values); // Add this line for debugging
 
-    try {
-      const { data } = await registerUser({
-        variables: {
-          username: values.username,
-          email: values.email,
-          password: values.password,
-        }
-      });
-      
-      if (data) {
-        message.success('Registration successful');
-        onClose();
-      }
-    } catch (e) {
-      console.error('Error during registration:', e.message);
-      message.error('Registration failed');
-    } finally {
+    // Simulation of a registration request will be replaced with actual registration logic later
+    setTimeout(() => {
       setLoading(false);
-    }
-  };
 
+      // Simulation of a registration request. Authentication for registration data will be added later
+      message.success('Registration successful');
+
+      onClose();
+    }, 1000);
+  };
   return (
     <Modal 
       title={<Title level={3}>Register</Title>} 
@@ -51,7 +47,10 @@ const Register = ({ onClose }) => {
         >
           <Input placeholder="Username" />
         </Form.Item>
+
+
         
+
         <Form.Item
           name="email"
           label="Email"
@@ -97,5 +96,7 @@ const Register = ({ onClose }) => {
   );
 };
 
+
 export default Register;
+
 
