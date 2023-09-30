@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Form, Input, Button, Modal, Typography, message } from 'antd';
 import { useMutation } from '@apollo/client';
+import { useNavigate } from 'react-router-dom';  // <-- import useNavigate
 import { LOGIN_USER } from '../../utils/mutations';
 
 const { Title } = Typography;
@@ -8,6 +9,7 @@ const { Title } = Typography;
 const Login = ({ visible, onClose }) => {
   const [loading, setLoading] = useState(false);
   const [login] = useMutation(LOGIN_USER);
+  const navigate = useNavigate();  // <-- set up the navigate function
 
   const onFinish = async (values) => {
     setLoading(true);
@@ -18,6 +20,7 @@ const Login = ({ visible, onClose }) => {
       if (data.login) {
         message.success('Login successful');
         onClose();
+        navigate('/');  // <-- navigate to dashboard
       } else {
         message.error('Invalid username or password');
       }
