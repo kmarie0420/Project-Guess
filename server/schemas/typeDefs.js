@@ -24,6 +24,8 @@ const typeDefs = gql`
   }
 
   type Mutation {
+    login(username: String!, password: String!): User
+    registerUser(username: String!, email: String!, password: String!): User
     createCapsule(input: CapsuleInput): Capsule
     updateCapsule(id: ID!, input: CapsuleInput): Capsule
     deleteCapsule(id: ID!): Boolean
