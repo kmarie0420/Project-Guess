@@ -9,7 +9,7 @@ const CapsuleSchema = new Schema({
   userId: {
     type: Schema.Types.ObjectId,
     ref: 'User',
-    required: false,  // Change this from true to false
+    required: true,  // Change this from true to false
 },
   letter: {
       type: String,

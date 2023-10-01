@@ -47,11 +47,11 @@ const resolvers = {
       await user.save();
       return user;
     },
-    createCapsule: async (parent, { input }) => {
-      console.log('Create capsule mutation triggered. Creating capsule with input:', input); 
+    createCapsule: async (parent, args) => {
+      console.log('Create capsule mutation triggered. Creating capsule with input:', args); 
 
       try {
-          const capsule = new Capsule(input);
+          const capsule = new Capsule(args);
           console.log('Capsule to be saved:', capsule);
           await capsule.save();
           console.log('Successfully created capsule:', capsule); 
