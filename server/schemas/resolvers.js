@@ -31,7 +31,7 @@ const resolvers = {
         throw new AuthenticationError('Invalid username or password');
       }
     
-      // Check if user data is available
+     
       if (!user._id || !user.username || !user.email) {
         console.error("User data is missing:", user);
         throw new Error('User data is missing or incomplete');
@@ -72,7 +72,7 @@ const resolvers = {
     openCapsule: async (parent, { id }) => {
       const capsule = await Capsule.findById(id);
 
-      // Check if the capsule exists
+      
       if (!capsule) {
           throw new Error("Capsule not found");
       }
