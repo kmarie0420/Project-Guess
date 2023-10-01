@@ -18,12 +18,12 @@ function App() {
 
   const handleLoginSuccess = (userData) => {
     setIsAuthenticated(true);
-    setUser(userData);  // Update user state with the returned user data
+    setUser(userData);  
   };
 
   const handleRegistrationSuccess = (newUserData) => {
     setIsAuthenticated(true);
-    setUser(newUserData);  // Update user state with the returned user data
+    setUser(newUserData);  
   };
 
   return (
@@ -36,7 +36,7 @@ function App() {
             isAuthenticated={isAuthenticated}
             onLogout={() => {
               setIsAuthenticated(false);
-              setUser(null); // Clear user data on logout
+              setUser(null); 
             }} 
           />
 
