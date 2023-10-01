@@ -26,6 +26,7 @@ export const CREATE_CAPSULE = gql`
             title
             openDate 
             letter   
+            photoURLs
         }
     }
 `;

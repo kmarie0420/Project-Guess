@@ -35,12 +35,12 @@ const resolvers = {
       await user.save();
       return user;
     },
-    createCapsule: async (parent, { input }) => {
-      console.log("createCapsule input:", input);
+    createCapsule: async (parent, args) => {
+      console.log("createCapsule input:", args);
+      const capsule = await Capsule.create(args)
+      return capsule
 
-      const capsule = new Capsule(input);
-      await capsule.save();
-      return capsule;
+     
     },
     updateCapsule: async (parent, { id, input }) => {
       const capsule = await Capsule.findByIdAndUpdate(id, input, { new: true });

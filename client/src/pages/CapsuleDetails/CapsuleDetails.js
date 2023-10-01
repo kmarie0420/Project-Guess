@@ -20,6 +20,7 @@ const CapsuleDetails = () => {
     const title = event.target.title.value;
     const openDate = new Date(event.target.openDate.value); // Convert openDate to a Date object
     const letter = event.target.letter.value;
+    const userId = "6519b1d6725c738da5c597dd"
 
     // Extract file URLs from fileList
     const photoUrls = fileList.map((file) => file.response.url);
@@ -31,7 +32,7 @@ const CapsuleDetails = () => {
 
     try {
       const response = await createCapsule({
-        variables: { input: { title, openDate, letter, photos: photoUrls } },
+        variables: { input: { title, openDate, letter, photoURLs: photoUrls } },
       });
 
       console.log("Server Response:", response);
@@ -78,7 +79,7 @@ const CapsuleDetails = () => {
               formData.append("file", file);
 
               // Send the formData to the server for file handling
-              fetch("/your-upload-endpoint", {
+              fetch("/graphql", {
                 method: "POST",
                 body: formData,
               })
@@ -88,13 +89,14 @@ const CapsuleDetails = () => {
                   onSuccess();
                 })
                 .catch((error) => {
-                  console.error("File upload error:", error);
+                  // console.error("File upload error:", error);
                   onSuccess(error);
                 });
             }}
             onChange={handleFileChange}
             fileList={fileList}
             listType="picture"
+            name="photoURLs"
           >
             <Button icon={<UploadOutlined />}>Upload</Button>
           </Upload>
