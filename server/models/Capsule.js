@@ -1,15 +1,23 @@
 const { Schema, model } = require('mongoose');
 
 const CapsuleSchema = new Schema({
-  note: {
-    type: String,
-    required: true,
+  title: { 
+      type: String,
+      required: true,
   },
   userId: {
-    type: Schema.Types.ObjectId,
-    ref: 'User',
-    required: true,
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+      required: true,
   },
+  letter: {
+      type: String,
+      required: true,
+  },
+  isOpened: {
+    type: Boolean,
+    default: false,
+},
 });
 
 const Capsule = model('Capsule', CapsuleSchema);

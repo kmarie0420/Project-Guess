@@ -1,9 +1,14 @@
 import React from "react";
 import "./Dashboard.css";
-// import 'antd/dist/antd.css';
-import { Button, DatePicker } from 'antd';
+import { useNavigate } from 'react-router-dom'; 
 
 const Dashboard = ({ capsules, onCapsuleClick }) => {
+  const navigate = useNavigate();  
+
+  const handleCreateCapsuleClick = () => {
+    navigate('/capsule-details'); 
+  };
+
   return (
     <div className="dashboard">
       <h1>Your Time Capsules</h1>
@@ -14,9 +19,8 @@ const Dashboard = ({ capsules, onCapsuleClick }) => {
           </li>
         ))}
       </ul>
-      {/* Option to create a new capsule */}
-      <Button type="primary">Create New Capsule</Button>
-      <DatePicker />
+      {/* Using standard HTML button */}
+      <button onClick={handleCreateCapsuleClick}>Create New Capsule</button>
     </div>
   );
 };
@@ -26,3 +30,4 @@ Dashboard.defaultProps = {
 };
 
 export default Dashboard;
+
