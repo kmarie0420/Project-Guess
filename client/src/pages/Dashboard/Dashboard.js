@@ -8,7 +8,7 @@ const Dashboard = ({ capsules, onCapsuleClick }) => {
     <div className="dashboard">
       <h1>Your Time Capsules</h1>
       <ul>
-        {capsules.map((capsule) => (
+        {capsules && capsules.map((capsule) => (
           <li key={capsule.id} onClick={() => onCapsuleClick(capsule.id)}>
             {capsule.title} (Open Date: {capsule.openDate})
           </li>
@@ -19,6 +19,10 @@ const Dashboard = ({ capsules, onCapsuleClick }) => {
       <DatePicker />
     </div>
   );
+};
+
+Dashboard.defaultProps = {
+  capsules: [],
 };
 
 export default Dashboard;
