@@ -35,10 +35,13 @@ const CapsuleDetails = () => {
             const response = await createCapsule({ 
                 variables: { input: submitValues } 
             });
-    
+        
             console.log('Server Response after capsule creation:', response);
             if (response.data && response.data.createCapsule) {
                 console.log('Capsule created:', response.data.createCapsule);
+                
+                
+                navigate('/');
             } else {
                 console.warn('Unexpected response structure from server');
             }

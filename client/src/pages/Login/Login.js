@@ -16,12 +16,12 @@ const Login = ({ visible, onClose, onSuccess }) => {
     console.log('Form values:', values);
     try {
       const { data } = await login({ variables: { ...values } });
-      console.log('Login Response:', data); // Log the entire response data
+      console.log('Login Response:', data); 
       
       if (data.login && data.login._id) {
-        console.log('Login Successful, User Data:', data.login); // Log the user data directly from `data.login`
+        console.log('Login Successful, User Data:', data.login); 
         
-        // Since it seems like your user data is directly in data.login, we'll pass that to onSuccess.
+        
         onSuccess(data.login);
         
         message.success('Login successful');
