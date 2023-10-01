@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Header.css';
 import { Button, DatePicker } from 'antd';
+import { Link, } from 'react-router-dom';
 
 const Header = ({ onLoginClick, onRegisterClick, isAuthenticated, onLogout }) => {
   const [isMenuVisible, setIsMenuVisible] = useState(false);
@@ -12,9 +13,6 @@ const Header = ({ onLoginClick, onRegisterClick, isAuthenticated, onLogout }) =>
       </div>
       <button className="menu-toggle" onClick={() => setIsMenuVisible(!isMenuVisible)}>☰</button>
       <ul className={`menu ${isMenuVisible ? 'active' : ''}`}>
-        {/* <li key="home">
-          <a href="/">Home</a>
-        </li> */}
       {isAuthenticated ? (
           <li key="logout">
             <Button type="default" onClick={onLogout}>Logout</Button>
