@@ -5,7 +5,7 @@ import { REGISTER_USER } from '../../utils/mutations';
 // import Auth from "../utils/auth";
 
 const { Title } = Typography;
-const Register = ({ onClose }) => {
+const Register = ({ onClose, onSuccess }) => {
   const [loading, setLoading] = useState(false);
   const [registerUser, { error }] = useMutation(REGISTER_USER);
 
@@ -26,6 +26,7 @@ const Register = ({ onClose }) => {
       
       if (data) {
         message.success('Registration successful');
+        onSuccess();
         onClose();
       }
     } catch (e) {

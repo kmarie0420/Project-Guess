@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './Header.css';
 import { Button, DatePicker } from 'antd';
 
-const Header = ({ onLoginClick, onRegisterClick }) => {
+const Header = ({ onLoginClick, onRegisterClick, isAuthenticated, onLogout }) => {
   const [isMenuVisible, setIsMenuVisible] = useState(false);
 
   return (
@@ -15,12 +15,20 @@ const Header = ({ onLoginClick, onRegisterClick }) => {
         {/* <li key="home">
           <a href="/">Home</a>
         </li> */}
-        <li key="login">
-          <Button type="primary" onClick={onLoginClick}>Sign in</Button>
-        </li>
-        <li key="register">
-          <Button type="default" onClick={onRegisterClick}>Sign Up</Button>
-        </li>
+      {isAuthenticated ? (
+          <li key="logout">
+            <Button type="default" onClick={onLogout}>Logout</Button>
+          </li>
+        ) : (
+          <>
+            <li key="login">
+              <Button type="primary" onClick={onLoginClick}>Sign in</Button>
+            </li>
+            <li key="register">
+              <Button type="default" onClick={onRegisterClick}>Sign Up</Button>
+            </li>
+          </>
+        )}
       </ul>
     </header>
   );

@@ -14,17 +14,21 @@ function App() {
   const [loginModalVisible, setLoginModalVisible] = useState(false);
   const [registerModalVisible, setRegisterModalVisible] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false); // NEW: authentication state
+  const handleLoginSuccess = () => {
+    setIsAuthenticated(true);
+  };
+  const handleRegistrationSuccess = () => {
+    setIsAuthenticated(true);
+  };
 
   return (
     <Router>
       <div className="App">
         <Header 
-          onLoginClick={() => {
-            setLoginModalVisible(true);
-         
-            setIsAuthenticated(true);
-          }} 
-          onRegisterClick={() => setRegisterModalVisible(true)} 
+          onLoginClick={() => setLoginModalVisible(true)} 
+          onRegisterClick={() => setRegisterModalVisible(true)}
+          isAuthenticated={isAuthenticated}
+          onLogout={() => setIsAuthenticated(false)} 
         />
 
         <main className="app-content">
@@ -41,10 +45,13 @@ function App() {
         <Login 
           visible={loginModalVisible} 
           onClose={() => setLoginModalVisible(false)} 
+          onSuccess={handleLoginSuccess}
         />
 
         {registerModalVisible && (
-          <Register onClose={() => setRegisterModalVisible(false)} />
+          <Register onClose={() => setRegisterModalVisible(false)} 
+          onSuccess={handleRegistrationSuccess}
+          />
         )}
 
         <Footer />

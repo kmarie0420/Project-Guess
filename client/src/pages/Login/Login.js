@@ -6,7 +6,7 @@ import { LOGIN_USER } from '../../utils/mutations';
 
 const { Title } = Typography;
 
-const Login = ({ visible, onClose }) => {
+const Login = ({ visible, onClose, onSuccess }) => {
   const [loading, setLoading] = useState(false);
   const [login] = useMutation(LOGIN_USER);
   const navigate = useNavigate();  // <-- set up the navigate function
@@ -16,11 +16,11 @@ const Login = ({ visible, onClose }) => {
     console.log('Form values:', values);
     try {
       const { data } = await login({ variables: { ...values } });
-
       if (data.login) {
         message.success('Login successful');
         onClose();
         navigate('/');  // <-- navigate to dashboard
+        onSuccess();  // <-- Inform the parent that login was successful
       } else {
         message.error('Invalid username or password');
       }

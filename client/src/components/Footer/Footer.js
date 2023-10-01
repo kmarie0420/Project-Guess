@@ -16,7 +16,7 @@ const Footer = () => {
             {/* <Link href="/about">About</Link>
             <Link href="/Get-Started">Get Started</Link> */}
             <Link href="/contact">Contact</Link>
-            <Link href="/funding">Support Us</Link>
+            <Link href="/stripeCheckout">Support Us</Link>
             <Link href="/privacy-policy">Privacy Policy</Link>
           </div>
         </Col>
