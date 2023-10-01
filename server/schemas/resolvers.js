@@ -36,12 +36,18 @@ const resolvers = {
       return user;
     },
     createCapsule: async (parent, { input }) => {
-      console.log("createCapsule input:", input);
+      console.log('Creating capsule with input:', input); 
 
-      const capsule = new Capsule(input);
-      await capsule.save();
-      return capsule;
-    },
+      try {
+          const capsule = new Capsule(input);
+          await capsule.save();
+          console.log('Successfully created capsule:', capsule); 
+          return capsule;
+      } catch (error) {
+          console.error("Error in createCapsule resolver:", error);
+          throw error;
+      }
+  },
     updateCapsule: async (parent, { id, input }) => {
       const capsule = await Capsule.findByIdAndUpdate(id, input, { new: true });
       return capsule;

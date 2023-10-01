@@ -11,6 +11,7 @@ const typeDefs = gql`
     title: String
     userId: User
     isOpened: Boolean
+    openDate: String!  
 }
   type Query {
     getTimeCapsules: [Capsule]
@@ -28,6 +29,7 @@ const typeDefs = gql`
     title: String!
     userId: ID
     letter: String!
+    openDate: String!
 }
 `;
 console.log('typeDefs loaded');
