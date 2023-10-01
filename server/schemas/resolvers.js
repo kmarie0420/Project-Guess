@@ -36,6 +36,8 @@ const resolvers = {
       return user;
     },
     createCapsule: async (parent, { input }) => {
+      console.log("createCapsule input:", input);
+
       const capsule = new Capsule(input);
       await capsule.save();
       return capsule;
@@ -50,16 +52,21 @@ const resolvers = {
     },
     openCapsule: async (parent, { id }) => {
       const capsule = await Capsule.findById(id);
+      const currentDate = new Date();
+      const openDate = new Date(capsule.openDate);
+
+      if (currentDate < openDate) {
+          throw new Error("The capsule is not ready to be opened yet.");
+      }
+
+      capsule.isOpened = true;
+      await capsule.save();
+
       return capsule;
-    },
-    // registerUser: async (parent, { username, email, password }) => {
-    //   const user = await User.create({ username, email, password });
-    //   const token = signToken(user);
-    //   return { token, user };
-    // },
-  
-  },
-};
+  }
+}  
+};  
 
 console.log('resolvers loaded');
 module.exports = resolvers;
+

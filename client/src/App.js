@@ -7,6 +7,8 @@ import Landing from './pages/Landing/Landing';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import Dashboard from './pages/Dashboard/Dashboard';
+import CapsuleDetails from './pages/CapsuleDetails/CapsuleDetails';
+
 // import 'antd/dist/antd.css';
 // import { Button, DatePicker } from 'antd';
 
@@ -21,7 +23,6 @@ function App() {
         <Header 
           onLoginClick={() => {
             setLoginModalVisible(true);
-         
             setIsAuthenticated(true);
           }} 
           onRegisterClick={() => setRegisterModalVisible(true)} 
@@ -30,11 +31,14 @@ function App() {
         <main className="app-content">
           <Routes>
             {isAuthenticated ? (
-              <Route path="/" element={<Dashboard />} />
+              <>
+                <Route path="/" element={<Dashboard />} />
+                <Route path="/capsule-details" element={<CapsuleDetails />} />
+              </>
             ) : (
               <Route path="/" element={<Landing />} />
             )}
-            {/* holding this spot for additional routes if we need them */}
+            {/* set this here for now if we need more routes */}
           </Routes>
         </main>
 

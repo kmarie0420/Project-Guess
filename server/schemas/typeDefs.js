@@ -8,9 +8,10 @@ const typeDefs = gql`
   }
   type Capsule {
     _id: ID
-    note: String
+    title: String
     userId: User
-  }
+    isOpened: Boolean
+}
   type Query {
     getTimeCapsules: [Capsule]
     getTimeCapsule(id: ID!): Capsule
@@ -24,9 +25,10 @@ const typeDefs = gql`
     openCapsule(id: ID!): Capsule
   }
   input CapsuleInput {
-    note: String
+    title: String!
     userId: ID
-  }
+    letter: String!
+}
 `;
 console.log('typeDefs loaded');
 module.exports = typeDefs;
