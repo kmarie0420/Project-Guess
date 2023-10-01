@@ -30,6 +30,11 @@ app.get('*', (req, res) => {
 
 const startApolloServer = async () => {
   await server.start();
+  app.use((req, res, next) => {
+    console.log("Incoming Request:", req.method, req.path, req.body);
+    next();
+  });
+  
   server.applyMiddleware({ app });
 
   
