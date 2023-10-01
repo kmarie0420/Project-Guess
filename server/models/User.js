@@ -20,14 +20,13 @@ const UserSchema = new Schema(
       required: true,
       minlength: 5,
     },
-    
   },
   {
     toJSON: {
       virtuals: true,
     },
   }
-)
+);
 
 UserSchema.pre('save', async function (next) {
   if (this.isNew || this.isModified('password')) {
@@ -37,11 +36,10 @@ UserSchema.pre('save', async function (next) {
   next();
 });
 
-
 UserSchema.methods.isCorrectPassword = async function (password) {
   return bcrypt.compare(password, this.password);
 };
 
 const User = model('User', UserSchema);
 
-module.exports = User;
+module.exports = User; // Corrected the typo here
