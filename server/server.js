@@ -31,7 +31,7 @@ app.get('*', (req, res) => {
 const startApolloServer = async () => {
   await server.start();
   app.use((req, res, next) => {
-    console.log("Incoming Request:", req.method, req.path, req.body);
+    console.log(`[REQUEST]: ${new Date().toISOString()} - ${req.method} ${req.path} - Body:`, req.body);
     next();
   });
   
@@ -39,9 +39,10 @@ const startApolloServer = async () => {
 
   
   db.once('open', () => {
+    console.log(`Database connection opened at ${new Date().toISOString()}`);
     app.listen(PORT, () => {
-      console.log(`API server running on port ${PORT}!`);
-      console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
+      console.log(`[SERVER]: API server running on port ${PORT}!`);
+      console.log(`[SERVER]: Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
     });
   });
 };

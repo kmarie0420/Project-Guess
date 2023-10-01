@@ -7,14 +7,19 @@ const CapsuleSchema = new Schema({
       trim: true
   },
   userId: {
-      type: Schema.Types.ObjectId,
-      ref: 'User',
-  },
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+    required: false,  // Change this from true to false
+},
   letter: {
       type: String,
       required: true,
       trim: true
   },
+    openDate: {
+      type: String,
+      required: true,
+    },
   isOpened: {
     type: Boolean,
     default: false,
