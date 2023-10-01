@@ -14,16 +14,17 @@ const CapsuleDetails = () => {
     
     const handleSubmit = async (values) => {
         const { title, openDate, letter } = values;
-
-        console.log('Title:', title);
-        console.log('Open Date:', openDate);
-        console.log('Letter:', letter);
-
+    
+       
+        const formattedOpenDate = openDate.format('YYYY-MM-DD');
+    
+        console.log('Submitting form with values:', { title, openDate: formattedOpenDate, letter });
+    
         try {
             const response = await createCapsule({ 
-                variables: { input: { title, openDate, letter } } 
+                variables: { input: { title, openDate: formattedOpenDate, letter } } 
             });
-
+    
             console.log('Server Response:', response);
         } catch (error) {
             console.error("Error creating capsule:", error);
