@@ -8,61 +8,70 @@ import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import Dashboard from './pages/Dashboard/Dashboard';
 import CapsuleDetails from './pages/CapsuleDetails/CapsuleDetails';
-
-// import 'antd/dist/antd.css';
-// import { Button, DatePicker } from 'antd';
+import UserContext from './UserContext';
 
 function App() {
   const [loginModalVisible, setLoginModalVisible] = useState(false);
   const [registerModalVisible, setRegisterModalVisible] = useState(false);
-  const [isAuthenticated, setIsAuthenticated] = useState(false); // NEW: authentication state
-  const handleLoginSuccess = () => {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [user, setUser] = useState(null);
+
+  const handleLoginSuccess = (userData) => {
     setIsAuthenticated(true);
+    setUser(userData);  // Update user state with the returned user data
   };
-  const handleRegistrationSuccess = () => {
+
+  const handleRegistrationSuccess = (newUserData) => {
     setIsAuthenticated(true);
+    setUser(newUserData);  // Update user state with the returned user data
   };
 
   return (
     <Router>
       <div className="App">
-        <Header 
-          onLoginClick={() => setLoginModalVisible(true)} 
-          onRegisterClick={() => setRegisterModalVisible(true)}
-          isAuthenticated={isAuthenticated}
-          onLogout={() => setIsAuthenticated(false)} 
-        />
-
-        <main className="app-content">
-          <Routes>
-            {isAuthenticated ? (
-              <>
-                <Route path="/" element={<Dashboard />} />
-                <Route path="/capsule-details" element={<CapsuleDetails />} />
-              </>
-            ) : (
-              <Route path="/" element={<Landing />} />
-            )}
-            {/* set this here for now if we need more routes */}
-          </Routes>
-        </main>
-
-        <Login 
-          visible={loginModalVisible} 
-          onClose={() => setLoginModalVisible(false)} 
-          onSuccess={handleLoginSuccess}
-        />
-
-        {registerModalVisible && (
-          <Register onClose={() => setRegisterModalVisible(false)} 
-          onSuccess={handleRegistrationSuccess}
+        <UserContext.Provider value={{ user, setUser }}>
+          <Header 
+            onLoginClick={() => setLoginModalVisible(true)} 
+            onRegisterClick={() => setRegisterModalVisible(true)}
+            isAuthenticated={isAuthenticated}
+            onLogout={() => {
+              setIsAuthenticated(false);
+              setUser(null); // Clear user data on logout
+            }} 
           />
-        )}
 
-        <Footer />
+          <main className="app-content">
+            <Routes>
+              {isAuthenticated ? (
+                <>
+                  <Route path="/" element={<Dashboard />} />
+                  <Route path="/capsule-details" element={<CapsuleDetails />} />
+                </>
+              ) : (
+                <Route path="/" element={<Landing />} />
+              )}
+            </Routes>
+          </main>
+
+          <Login 
+            visible={loginModalVisible} 
+            onClose={() => setLoginModalVisible(false)} 
+            onSuccess={handleLoginSuccess}
+          />
+
+          {registerModalVisible && (
+            <Register 
+              onClose={() => setRegisterModalVisible(false)} 
+              onSuccess={handleRegistrationSuccess}
+            />
+          )}
+
+          <Footer />
+        </UserContext.Provider>
       </div>
     </Router>
   );
 }
 
 export default App;
+

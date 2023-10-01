@@ -9,18 +9,20 @@ const typeDefs = gql`
   type Capsule {
     _id: ID
     title: String
-    userId: User
+    userId: ID
     isOpened: Boolean
-    openDate: String!  
+    openDate: String! 
+    letter: String 
 }
   type Query {
     getTimeCapsules: [Capsule]
     getTimeCapsule(id: ID!): Capsule
   }
+  
   type Mutation {
     login(username: String!, password: String!): User
     registerUser(username: String!, email: String!, password: String!): User
-    createCapsule(input: CapsuleInput): Capsule
+    createCapsule(input: CapsuleInput!): Capsule
     updateCapsule(id: ID!, input: CapsuleInput): Capsule
     deleteCapsule(id: ID!): Capsule
     openCapsule(id: ID!): Capsule
