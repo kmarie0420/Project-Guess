@@ -17,4 +17,4 @@ export const saveToken = (token) => {
   export const isAuthenticated = () => {
     return getToken() !== null;
   }
-  
+
