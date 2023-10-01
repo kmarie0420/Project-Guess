@@ -6,7 +6,7 @@ import { Image } from 'antd';
 
 const { Title, Paragraph } = Typography;
 
-function Landing() {
+function Landing({ isAuthenticated }) {
   const [phase, setPhase] = useState('greeting');
 
   useEffect(() => {

@@ -32,6 +32,12 @@ const typeDefs = gql`
     deleteCapsule(id: ID!): Capsule
     openCapsule(id: ID!): Capsule
   }
+  input CapsuleInput {
+    title: String!
+    userId: ID
+    letter: String!
+    openDate: String!
+}
 `;
 console.log("typeDefs loaded");
 module.exports = typeDefs;
