@@ -14,7 +14,7 @@ const typeDefs = gql`
     isOpened: Boolean
     openDate: String!
     letter: String
-    photoURLs: String
+    photoURLs: [String]
   }
   
   type Query {
@@ -36,7 +36,7 @@ const typeDefs = gql`
     userId: ID
     letter: String!
     openDate: String!
-    photoURLs: String # Add the photoURLs field here as well
+    photoURLs: [String]
   }
 `;
 

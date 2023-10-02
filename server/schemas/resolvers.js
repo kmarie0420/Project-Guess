@@ -50,13 +50,25 @@ const resolvers = {
       console.log('Create capsule mutation triggered. Creating capsule with input:', input);
 
       try {
-        const capsule = new Capsule(input);
+        // Create a new capsule with the provided input fields
+        const capsule = new Capsule({
+          title: input.title,
+          userId: input.userId,
+          letter: input.letter,
+          openDate: input.openDate,
+          photoURLs: input.photoURLs, // Include the photoURLs field
+        });
+    
         console.log('Capsule to be saved:', capsule);
+    
+        // Save the capsule to the database
         await capsule.save();
+    
         console.log('Successfully created capsule:', capsule);
+    
         return capsule;
       } catch (error) {
-        console.error('Error in createCapsule resolver:', error);
+        console.error("Error in createCapsule resolver:", error);
         throw error;
       }
     },
