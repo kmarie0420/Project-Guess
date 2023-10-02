@@ -9,7 +9,21 @@ const resolvers = {
       return await Capsule.find();
     },
     getTimeCapsule: async (parent, { id }) => {
-      return await Capsule.findById(id);
+      console.log('Fetching Capsule with ID:', id);
+      
+      try {
+        const capsule = await Capsule.findById(id);
+        if (!capsule) {
+          console.error('Capsule not found with ID:', id);
+          return null; // Return null or handle the not found case accordingly
+        }
+  
+        console.log('Fetched Capsule:', capsule);
+        return capsule;
+      } catch (error) {
+        console.error('Error fetching Capsule:', error);
+        throw error;
+      }
     },
   },
   Mutation: {
