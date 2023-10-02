@@ -1,4 +1,4 @@
-const { gql } = require("apollo-server-express");
+const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
   type User {
@@ -6,14 +6,17 @@ const typeDefs = gql`
     username: String
     email: String
   }
+  
   type Capsule {
     _id: ID
     title: String
     userId: ID
     isOpened: Boolean
-    openDate: String! 
-    letter: String 
-}
+    openDate: String!
+    letter: String
+    photoURLs: String
+  }
+  
   type Query {
     getTimeCapsules: [Capsule]
     getTimeCapsule(id: ID!): Capsule
@@ -27,12 +30,15 @@ const typeDefs = gql`
     deleteCapsule(id: ID!): Capsule
     openCapsule(id: ID!): Capsule
   }
+  
   input CapsuleInput {
     title: String!
     userId: ID
     letter: String!
     openDate: String!
-}
+    photoURLs: String # Add the photoURLs field here as well
+  }
 `;
-console.log("typeDefs loaded");
+
+console.log('typeDefs loaded');
 module.exports = typeDefs;

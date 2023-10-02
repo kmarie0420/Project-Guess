@@ -25,8 +25,8 @@ export const CREATE_CAPSULE = gql`
             _id
             title
             openDate 
-            letter   
-            photoURLs
+            letter
+            photoURLs   
         }
     }
 `;
@@ -36,7 +36,15 @@ export const OPEN_CAPSULE = gql`
             _id
             title
             isOpened
+            photoURLs
             
         }
     }
 `;
+
+
+
+
+
+
+
