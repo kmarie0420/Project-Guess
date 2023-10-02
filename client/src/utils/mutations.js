@@ -1,11 +1,15 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const REGISTER_USER = gql`
-  mutation RegisterUser($username: String!, $email: String!, $password: String!) {
+  mutation RegisterUser(
+    $username: String!
+    $email: String!
+    $password: String!
+  ) {
     registerUser(username: $username, email: $email, password: $password) {
-        _id
-        username
-        email
+      _id
+      username
+      email
     }
   }
 `;
@@ -20,22 +24,23 @@ export const LOGIN_USER = gql`
   }
 `;
 export const CREATE_CAPSULE = gql`
-    mutation CreateCapsule($input: CapsuleInput!) {
-        createCapsule(input: $input) {
-            _id
-            title
-            openDate 
-            letter   
-        }
+  mutation CreateCapsuleWithPhotos($input: CapsuleInput!) {
+    createCapsule(input: $input) {
+      _id
+      title
+      openDate
+      letter
+      photoURLs
     }
+  }
 `;
 export const OPEN_CAPSULE = gql`
-    mutation OpenCapsule($id: ID!) {
-        openCapsule(id: $id) {
-            _id
-            title
-            isOpened
-            
-        }
+  mutation OpenCapsule($id: ID!) {
+    openCapsule(id: $id) {
+      _id
+      title
+      isOpened
+      photoURLs
     }
+  }
 `;
