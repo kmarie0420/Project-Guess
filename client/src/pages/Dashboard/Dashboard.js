@@ -22,12 +22,16 @@ const Dashboard = ({ onCapsuleClick, username }) => {
   };
 
   const handleCapsuleClick = (capsule) => {
-    //cosnt current date is today's date
+    // current date is today's date
     const currentDate = new Date();
-    //open date is the date the capsule is set to open
-    const openDate = new Date(capsule.openDate);
-    //if the current date is greater than or equal to the open date, then the capsule can be opened
+    console.log(currentDate);
+    // open date is the date the capsule is set to open convert to date object
+    const openDate = new Date(parseInt(capsule.openDate));
+    console.log(openDate);
+
+    // if the current date is greater than or equal to the open date, then the capsule can be opened
     if (currentDate >= openDate) {
+      console.log("Capsule can be opened");
 
       navigate(`/DisplayCapsule/${capsule._id}`);
     } else {

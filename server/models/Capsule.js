@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model } = require("mongoose");
 
 const CapsuleSchema = new Schema({
   _id: {
@@ -12,8 +12,8 @@ const CapsuleSchema = new Schema({
   },
   userId: {
     type: Schema.Types.ObjectId,
-    ref: 'User',
-    required: true, 
+    ref: "User",
+    required: true,
   },
   letter: {
     type: String,
@@ -28,9 +28,8 @@ const CapsuleSchema = new Schema({
     type: Boolean,
     default: false,
   },
-
 });
 
-const Capsule = model('Capsule', CapsuleSchema);
+const Capsule = model("Capsule", CapsuleSchema);
 
 module.exports = Capsule;
