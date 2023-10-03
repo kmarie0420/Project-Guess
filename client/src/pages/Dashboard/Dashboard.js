@@ -5,6 +5,12 @@ import { useNavigate } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { GET_ALL_CAPSULES } from '../../utils/queries';
 
+const now = new Date().toLocaleDateString('en-US', {
+  month: 'long',
+  day: 'numeric',
+  year: 'numeric'
+});
+
 const Dashboard = ({ onCapsuleClick, username }) => {
   const { data, loading, error } = useQuery(GET_ALL_CAPSULES);
   const navigate = useNavigate();
@@ -14,11 +20,14 @@ const Dashboard = ({ onCapsuleClick, username }) => {
   };
 
   const handleCapsuleClick = (capsule) => {
-    const currentDate = new Date(Date.UTC(new Date().getUTCFullYear(), new Date().getUTCMonth(), new Date().getUTCDate()));
+    //cosnt current date is today's date
+    const currentDate = new Date();
+    //open date is the date the capsule is set to open
     const openDate = new Date(capsule.openDate);
-   
-    if (currentDate.getTime() >= openDate.getTime()) {
-      navigate(`/capsule-view/${capsule._id}`);
+    //if the current date is greater than or equal to the open date, then the capsule can be opened
+    if (currentDate >= openDate) {
+
+      navigate(`/DisplayCapsule/${capsule._id}`);
     } else {
       message.error("This capsule is not ready to be opened yet.");
     }
@@ -30,7 +39,7 @@ const Dashboard = ({ onCapsuleClick, username }) => {
   const capsules = data.getAllCapsules || [];
 
   return (
-    <Card title={`Hello, ${username}! Your Time Capsules`} style={{ maxWidth: '800px', margin: '40px auto' }}>
+    <Card title={`Hello, ${username}! Today's date is ${now}! `} style={{ maxWidth: '800px', margin: '40px auto' }}>
       <List
         dataSource={capsules}
         renderItem={capsule => {

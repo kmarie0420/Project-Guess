@@ -1,6 +1,10 @@
 const { Schema, model } = require('mongoose');
 
 const CapsuleSchema = new Schema({
+  _id: {
+    type: Schema.Types.ObjectId,
+    default: () => new Types.ObjectId(),
+  },
   title: {
     type: String,
     required: true,

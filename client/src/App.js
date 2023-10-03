@@ -9,6 +9,7 @@ import Register from './pages/Register/Register';
 import Dashboard from './pages/Dashboard/Dashboard';
 import CapsuleDetails from './pages/CapsuleDetails/CapsuleDetails';
 import UserContext from './UserContext';
+import DisplayCapsule from './pages/DisplayCapsule/DisplayCapsule';
 
 
 function App() {
@@ -38,17 +39,15 @@ function App() {
             }}
           />
           <main className="app-content">
-            <Routes>
-              {isAuthenticated ? (
+          <Routes>
+              <Route path="/" element={<Landing />} />
+              {isAuthenticated && (
                 <>
-                  <Route path="/" element={<Dashboard />} />
+                  <Route path="/dashboard" element={<Dashboard />} />
                   <Route path="/capsule-details" element={<CapsuleDetails />} />
-                  
                 </>
-              ) : (
-                <Route path="/" element={<Landing />} />
               )}
-            </Routes>
+          </Routes>
           </main>
           <Login
             visible={loginModalVisible}
