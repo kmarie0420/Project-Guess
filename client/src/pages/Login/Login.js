@@ -26,7 +26,7 @@ const Login = ({ visible, onClose, onSuccess }) => {
         
         message.success('Login successful');
         onClose();
-        navigate('/');
+        navigate('/dashboard');
       } else {
         console.warn('Login data might be missing or structured differently:', data);
         message.error('Invalid username or password');

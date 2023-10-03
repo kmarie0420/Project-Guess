@@ -38,16 +38,15 @@ function App() {
             }}
           />
           <main className="app-content">
-            <Routes>
+          <Routes>
               <Route path="/" element={<Landing />} />
               {isAuthenticated && (
                 <>
                   <Route path="/dashboard" element={<Dashboard />} />
                   <Route path="/capsule-details" element={<CapsuleDetails />} />
-                  
                 </>
               )}
-            </Routes>
+          </Routes>
           </main>
           <Login
             visible={loginModalVisible}
