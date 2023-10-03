@@ -8,7 +8,7 @@ import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import Dashboard from './pages/Dashboard/Dashboard';
 import CapsuleDetails from './pages/CapsuleDetails/CapsuleDetails';
-import UserContext from './UserContext';
+import UserContext from './pages/UserContext/UserContext';
 import DisplayCapsule from './pages/DisplayCapsule/DisplayCapsule';
 
 
@@ -43,7 +43,7 @@ function App() {
               <Route path="/" element={<Landing />} />
               {isAuthenticated && (
                 <>
-                  <Route path="/" element={<Dashboard username={user} />} />
+                  <Route path="/dashboard" element={<Dashboard username={user} />} />
                   <Route
                     path="/capsule-details"
                     element={<CapsuleDetails user={user} />}
