@@ -3,7 +3,7 @@ import { useMutation } from "@apollo/client";
 import { CREATE_CAPSULE } from "../../utils/mutations";
 import { useNavigate } from "react-router-dom";
 import { ArrowLeftOutlined } from "@ant-design/icons";
-import UserContext from "../../UserContext";
+import UserContext from "../UserContext/UserContext";
 import { Form, Input, Button, DatePicker, Card, Upload, message } from "antd";
 import { InboxOutlined } from "@ant-design/icons";
 

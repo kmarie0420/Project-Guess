@@ -1,16 +1,18 @@
-import React from 'react';
-import { Button, List, Card, message } from 'antd';
+import React, { useContext } from 'react';
+import { Button, List, Card, message } from 'antd'; // Added 'message' from antd for feedback
 import { PlusOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { GET_ALL_CAPSULES } from '../../utils/queries';
+import UserContext from '../../pages/UserContext/UserContext';
 
 const Dashboard = ({ onCapsuleClick, username }) => {
   const { data, loading, error } = useQuery(GET_ALL_CAPSULES);
   const navigate = useNavigate();
+  const userContext = useContext(UserContext); // Access user data from context
 
   const handleCreateCapsuleClick = () => {
-    navigate('/capsule-details');
+    navigate("/capsule-details");
   };
 
   const handleCapsuleClick = (capsule) => {
@@ -30,7 +32,10 @@ const Dashboard = ({ onCapsuleClick, username }) => {
   const capsules = data.getAllCapsules || [];
 
   return (
-    <Card title={`Hello, ${username}! Your Time Capsules`} style={{ maxWidth: '800px', margin: '40px auto' }}>
+    <Card
+      title={`Hello, ${username}! Your Time Capsules`}
+      style={{ maxWidth: "800px", margin: "40px auto" }}
+    >
       <List
         dataSource={capsules}
         renderItem={capsule => {
@@ -54,7 +59,11 @@ const Dashboard = ({ onCapsuleClick, username }) => {
           );
         }}
       />
-      <Button type="primary" icon={<PlusOutlined />} onClick={handleCreateCapsuleClick}>
+      <Button
+        type="primary"
+        icon={<PlusOutlined />}
+        onClick={handleCreateCapsuleClick}
+      >
         Create New Capsule
       </Button>
     </Card>
@@ -66,9 +75,3 @@ Dashboard.defaultProps = {
 };
 
 export default Dashboard;
-
-
-
-
-
-

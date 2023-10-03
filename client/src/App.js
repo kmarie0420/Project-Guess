@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import './App.css';
-import Header from './components/Header/Header';
-import Footer from './components/Footer/Footer';
-import Landing from './pages/Landing/Landing';
-import Login from './pages/Login/Login';
-import Register from './pages/Register/Register';
-import Dashboard from './pages/Dashboard/Dashboard';
-import CapsuleDetails from './pages/CapsuleDetails/CapsuleDetails';
-import UserContext from './UserContext';
+import React, { useState } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import "./App.css";
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
+import Landing from "./pages/Landing/Landing";
+import Login from "./pages/Login/Login";
+import Register from "./pages/Register/Register";
+import Dashboard from "./pages/Dashboard/Dashboard";
+import CapsuleDetails from "./pages/CapsuleDetails/CapsuleDetails";
+import UserContext from "./pages/UserContext/UserContext";
 
 
 function App() {
@@ -41,9 +41,11 @@ function App() {
             <Routes>
               {isAuthenticated ? (
                 <>
-                  <Route path="/" element={<Dashboard />} />
-                  <Route path="/capsule-details" element={<CapsuleDetails />} />
-                  
+                  <Route path="/" element={<Dashboard user={user} />} />
+                  <Route
+                    path="/capsule-details"
+                    element={<CapsuleDetails user={user} />}
+                  />
                 </>
               ) : (
                 <Route path="/" element={<Landing />} />
@@ -69,4 +71,3 @@ function App() {
 }
 
 export default App;
-
