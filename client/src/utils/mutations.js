@@ -30,7 +30,6 @@ export const CREATE_CAPSULE = gql`
       title
       openDate
       letter
-      photoURLs
     }
   }
 `;
@@ -40,7 +39,6 @@ export const OPEN_CAPSULE = gql`
       _id
       title
       isOpened
-      photoURLs
     }
   }
 `;
