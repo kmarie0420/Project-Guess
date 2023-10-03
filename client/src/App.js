@@ -43,8 +43,11 @@ function App() {
               <Route path="/" element={<Landing />} />
               {isAuthenticated && (
                 <>
-                  <Route path="/dashboard" element={<Dashboard />} />
-                  <Route path="/capsule-details" element={<CapsuleDetails />} />
+                  <Route path="/" element={<Dashboard user={user} />} />
+                  <Route
+                    path="/capsule-details"
+                    element={<CapsuleDetails user={user} />}
+                  />
                 </>
               )}
           </Routes>
@@ -68,4 +71,3 @@ function App() {
 }
 
 export default App;
-
