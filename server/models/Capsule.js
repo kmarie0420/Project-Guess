@@ -24,13 +24,7 @@ const CapsuleSchema = new Schema({
     type: Boolean,
     default: false,
   },
-  photoURLs: [
-    {
-      type: String,
-      default: 'http://placekitten.com/g/200/300',
-      trim: true,
-    },
-  ],
+
 });
 
 const Capsule = model('Capsule', CapsuleSchema);
