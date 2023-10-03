@@ -4,15 +4,15 @@ const resolvers = {
   Mutation: {
     createPaymentIntent: async (_, { amount, currency, paymentMethodId }) => {
       try {
-        // Create a payment intent using the Stripe API
+       
         const paymentIntent = await stripe.paymentIntents.create({
           amount,
           currency,
           payment_method: paymentMethodId,
-          // Add other payment options and confirm the payment
+          
         });
 
-        // Return the client secret to the client
+       
         return {
           clientSecret: paymentIntent.client_secret,
         };
