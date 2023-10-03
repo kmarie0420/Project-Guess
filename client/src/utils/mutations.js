@@ -42,3 +42,16 @@ export const OPEN_CAPSULE = gql`
     }
   }
 `;
+
+export const GET_ONE_CAPSULE = gql`
+  query GetOneCapsule($capsuleId: ID!) {
+    getOneCapsule(capsuleId: $capsuleId) {
+      _id
+      title
+      letter
+      photoURLs
+    }
+  }
+`;
+
+
