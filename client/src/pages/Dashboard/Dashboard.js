@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Button, List, Card, message } from 'antd'; // Added 'message' from antd for feedback
 import { PlusOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { GET_ALL_CAPSULES } from '../../utils/queries';
+import UserContext from '../../pages/UserContext/UserContext';
 
 const Dashboard = ({ onCapsuleClick, username }) => {
   const { data, loading, error } = useQuery(GET_ALL_CAPSULES);
