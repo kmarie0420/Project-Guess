@@ -39,13 +39,12 @@ function App() {
           />
           <main className="app-content">
             <Routes>
-              {isAuthenticated ? (
+              <Route path="/" element={<Landing />} />
+              {isAuthenticated && (
                 <>
-                  <Route path="/" element={<Dashboard />} />
+                  <Route path="/dashboard" element={<Dashboard />} />
                   <Route path="/capsule-details" element={<CapsuleDetails />} />
                 </>
-              ) : (
-                <Route path="/" element={<Landing />} />
               )}
             </Routes>
           </main>

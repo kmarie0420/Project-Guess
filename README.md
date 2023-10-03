@@ -74,7 +74,10 @@ If you have any questions or concerns, please email:
 
 * https://medium.com/@andreas.lengkeek/a-major-point-of-trouble-for-first-time-developers-is-working-out-how-to-store-and-upload-files-on-2e847e908332MediumMedium
 * [Fernando Lavin-photo](https://unsplash.com/photos/rN2k98llNBg?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink)
-* [Markus Spiske-camera roll](https://unsplash.com/photos/j8jNI9zDwRw?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink)
+* [Markus Spiske-camera roll - horizontal ](https://unsplash.com/photos/j8jNI9zDwRw?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink)
+* [Markus Spiske-camera roll - vertical](https://unsplash.com/photos/CLo6bHT0JMU?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink)
+* [Joanna Klupś - memories](https://unsplash.com/photos/rXBbHFYwuMQ?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink)
+* [Debby Hudson - flower and letters](https://unsplash.com/photos/7XC4teSHtzo?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink)
 
 ## Resources
 * [APOLLO DOC](https://www.apollographql.com/docs/react/data/mutations)
@@ -86,3 +89,4 @@ If you have any questions or concerns, please email:
 * [Ant Design Docs](https://ant.design/docs/react/getting-started)
 * [Ileriayo's Markdown-badges](https://ileriayo.github.io/markdown-badges/)
 * [Font Awesome Icon](https://fontawesome.com/icons/replyd?f=brands&s=solid)
+* [icon8 Time Capsule Icon ](https://icons8.com/icons/set/time-capsule)

@@ -13,11 +13,11 @@ const Footer = () => {
         </Col>
         <Col xs={{ span: 24, order: 1 }} md={{ span: 16, order: 2 }}>
           <div className="footer-links">
-            {/* <Link href="/about">About</Link>
-            <Link href="/Get-Started">Get Started</Link> */}
+            {/* <Link href="/about">About</Link> */}
+            <Link href="/Get-Started">Get Started</Link>
             <Link href="/contact">Contact</Link>
             <Link href="/stripeCheckout">Support Us</Link>
-            <Link href="/privacy-policy">Privacy Policy</Link>
+            {/* <Link href="/privacy-policy">Privacy Policy</Link> */}
           </div>
         </Col>
       </Row>
