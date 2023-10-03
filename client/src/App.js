@@ -41,7 +41,7 @@ function App() {
             <Routes>
               {isAuthenticated ? (
                 <>
-                  <Route path="/" element={<Dashboard user={user} />} />
+                  <Route path="/" element={<Dashboard username={user} />} />
                   <Route
                     path="/capsule-details"
                     element={<CapsuleDetails user={user} />}

@@ -22,7 +22,7 @@ const Login = ({ visible, onClose, onSuccess }) => {
         console.log('Login Successful, User Data:', data.login); 
         
         
-        onSuccess(data.login);
+        onSuccess(data.login.username);
         
         message.success('Login successful');
         onClose();
@@ -73,5 +73,3 @@ const Login = ({ visible, onClose, onSuccess }) => {
 };
 
 export default Login;
-
-
