@@ -73,6 +73,8 @@ If you have any questions or concerns, please email:
 ## Credits
 
 * https://medium.com/@andreas.lengkeek/a-major-point-of-trouble-for-first-time-developers-is-working-out-how-to-store-and-upload-files-on-2e847e908332MediumMedium
+* [Fernando Lavin-photo](https://unsplash.com/photos/rN2k98llNBg?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink)
+* [Markus Spiske-camera roll](https://unsplash.com/photos/j8jNI9zDwRw?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink)
 
 ## Resources
 * [APOLLO DOC](https://www.apollographql.com/docs/react/data/mutations)

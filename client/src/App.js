@@ -10,36 +10,33 @@ import Dashboard from './pages/Dashboard/Dashboard';
 import CapsuleDetails from './pages/CapsuleDetails/CapsuleDetails';
 import UserContext from './UserContext';
 
+
 function App() {
   const [loginModalVisible, setLoginModalVisible] = useState(false);
   const [registerModalVisible, setRegisterModalVisible] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState(null);
-
   const handleLoginSuccess = (userData) => {
     setIsAuthenticated(true);
-    setUser(userData);  
+    setUser(userData);
   };
-
   const handleRegistrationSuccess = (newUserData) => {
     setIsAuthenticated(true);
-    setUser(newUserData);  
+    setUser(newUserData);
   };
-
   return (
     <Router>
       <div className="App">
         <UserContext.Provider value={{ user, setUser }}>
-          <Header 
-            onLoginClick={() => setLoginModalVisible(true)} 
+          <Header
+            onLoginClick={() => setLoginModalVisible(true)}
             onRegisterClick={() => setRegisterModalVisible(true)}
             isAuthenticated={isAuthenticated}
             onLogout={() => {
               setIsAuthenticated(false);
-              setUser(null); 
-            }} 
+              setUser(null);
+            }}
           />
-
           <main className="app-content">
             <Routes>
               {isAuthenticated ? (
@@ -52,26 +49,21 @@ function App() {
               )}
             </Routes>
           </main>
-
-          <Login 
-            visible={loginModalVisible} 
-            onClose={() => setLoginModalVisible(false)} 
+          <Login
+            visible={loginModalVisible}
+            onClose={() => setLoginModalVisible(false)}
             onSuccess={handleLoginSuccess}
           />
-
           {registerModalVisible && (
-            <Register 
-              onClose={() => setRegisterModalVisible(false)} 
+            <Register
+              onClose={() => setRegisterModalVisible(false)}
               onSuccess={handleRegistrationSuccess}
             />
           )}
-
           <Footer />
         </UserContext.Provider>
       </div>
     </Router>
   );
 }
-
 export default App;
-
