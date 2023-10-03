@@ -1,32 +1,50 @@
-//connect to mongo and retrieve capsule details to display for the user
+import React from "react";
+import { useQuery } from "@apollo/client";
+import { Card, List, message } from "antd";
+import { useNavigate } from "react-router-dom";
 
-import React from 'react';
-import { useLocation } from 'react-router-dom';
-import { useQuery } from '@apollo/client';
-import { GET_ALL_CAPSULES } from '../../utils/queries';
+import { GET_ONE_CAPSULE } from "../../utils/queries";
 
-
-const getOneCapsule = (capsuleId) => {
-    const { data, loading, error } = useQuery(GET_ALL_CAPSULES);
+const DisplayCapsule = ({ onCapsuleClick, username }) => {
+    const { data, loading, error } = useQuery(GET_ONE_CAPSULE);
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error: {error.message}</p>;
-    const capsules = data.getAllCapsules || [];
-    const capsule = capsules.find((capsule) => capsule._id === capsuleId);
-    return capsule;
-}
 
-const DisplayCapsule = () => {
-    const location = useLocation();
-    const capsuleId = location.state.capsule._id;
-    const capsule = getOneCapsule(capsuleId);
+    const { title } = data.capsule;
+
     return (
-        <div>
-            <h1>{capsule.title}</h1>
-            <p>{capsule.contents}</p>
-        </div>
-    )
-}
+        <Card title={`${title}`} style={{ maxWidth: '800px', margin: '40px auto' }}>
+            <div className="container">
+                <div className="row">
+                    <div className="col-12">
+                        <h2>Display Capsule</h2>
+                        <div className="card">
+                            <div className="card-body">
+                                <h5 className="card-title">Capsule Title</h5>
+                                <p className="card-text">Letter</p>
+                                {/* image */}
+                                <img src="..." className="card-img-top" alt="..."></img>
+                                {/* image */}
+                                <img src="..." className="card-img-top" alt="..."></img>
+                                {/* image */}
+                                <img src="..." className="card-img-top" alt="..."></img>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </Card>
+    );
+};
+
+//defaut props  
+
+DisplayCapsule.defaultProps = {
+    title: "Capsule Title",
+    letter: "Letter",
+    image: "Image",
+};
+
 
 
 export default DisplayCapsule;
-
