@@ -41,7 +41,7 @@ const CapsuleDetails = () => {
       console.log("Server Response after capsule creation:", response);
       if (response.data && response.data.createCapsule) {
         console.log("Capsule created:", response.data.createCapsule);
-        navigate("/");
+        navigate("/dashboard");
       } else {
         console.warn("Unexpected response structure from server");
       }
@@ -69,7 +69,7 @@ const CapsuleDetails = () => {
       <Button
         type="link"
         icon={<ArrowLeftOutlined />}
-        onClick={() => navigate("/")}
+        onClick={() => navigate("/dashboard")}
         style={{ marginBottom: "20px" }}
       >
         Back to Dashboard
@@ -129,7 +129,7 @@ const CapsuleDetails = () => {
           </Button>
           <Button
             type="default"
-            onClick={() => navigate("/")}
+            onClick={() => navigate("/dashboard")}
             style={{ marginLeft: "10px" }}
           >
             Cancel

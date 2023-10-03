@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import './Header.css';
 import { Button, DatePicker } from 'antd';
-import { Link, } from 'react-router-dom';
-
+import { Link, useNavigate } from 'react-router-dom';
 const Header = ({ onLoginClick, onRegisterClick, isAuthenticated, onLogout }) => {
   const [isMenuVisible, setIsMenuVisible] = useState(false);
-
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    onLogout();
+    navigate('/');
+  };
   return (
     <header className="app-header">
       <div className="logo">
@@ -15,7 +18,7 @@ const Header = ({ onLoginClick, onRegisterClick, isAuthenticated, onLogout }) =>
       <ul className={`menu ${isMenuVisible ? 'active' : ''}`}>
       {isAuthenticated ? (
           <li key="logout">
-            <Button type="default" onClick={onLogout}>Logout</Button>
+            <Button type="default" onClick={handleLogout}>Logout</Button>
           </li>
         ) : (
           <>
@@ -31,5 +34,4 @@ const Header = ({ onLoginClick, onRegisterClick, isAuthenticated, onLogout }) =>
     </header>
   );
 }
-
 export default Header;
