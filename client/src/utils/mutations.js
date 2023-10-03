@@ -43,8 +43,9 @@ export const OPEN_CAPSULE = gql`
   }
 `;
 
+//mutation for get one capsule
 export const GET_ONE_CAPSULE = gql`
-  query GetOneCapsule($capsuleId: ID!) {
+  mutation GetOneCapsule($capsuleId: ID!) {
     getOneCapsule(capsuleId: $capsuleId) {
       _id
       title

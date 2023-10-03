@@ -21,4 +21,3 @@ export const GET_ONE_CAPSULE = gql`
     }
   }
 `;
-
