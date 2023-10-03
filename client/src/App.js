@@ -10,22 +10,20 @@ import Dashboard from "./pages/Dashboard/Dashboard";
 import CapsuleDetails from "./pages/CapsuleDetails/CapsuleDetails";
 import UserContext from "./pages/UserContext/UserContext";
 
+
 function App() {
   const [loginModalVisible, setLoginModalVisible] = useState(false);
   const [registerModalVisible, setRegisterModalVisible] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState(null);
-
   const handleLoginSuccess = (userData) => {
     setIsAuthenticated(true);
     setUser(userData);
   };
-
   const handleRegistrationSuccess = (newUserData) => {
     setIsAuthenticated(true);
     setUser(newUserData);
   };
-
   return (
     <Router>
       <div className="App">
@@ -39,7 +37,6 @@ function App() {
               setUser(null);
             }}
           />
-
           <main className="app-content">
             <Routes>
               {isAuthenticated ? (
@@ -55,25 +52,21 @@ function App() {
               )}
             </Routes>
           </main>
-
           <Login
             visible={loginModalVisible}
             onClose={() => setLoginModalVisible(false)}
             onSuccess={handleLoginSuccess}
           />
-
           {registerModalVisible && (
             <Register
               onClose={() => setRegisterModalVisible(false)}
               onSuccess={handleRegistrationSuccess}
             />
           )}
-
           <Footer />
         </UserContext.Provider>
       </div>
     </Router>
   );
 }
-
 export default App;
