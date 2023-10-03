@@ -44,6 +44,7 @@ function App() {
                 <>
                   <Route path="/dashboard" element={<Dashboard />} />
                   <Route path="/capsule-details" element={<CapsuleDetails />} />
+                  
                 </>
               )}
             </Routes>
@@ -65,4 +66,5 @@ function App() {
     </Router>
   );
 }
+
 export default App;

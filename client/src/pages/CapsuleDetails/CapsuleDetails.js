@@ -14,7 +14,7 @@ const CapsuleDetails = () => {
   const { user } = useContext(UserContext);
   console.log("User from context:", user);
   const [createCapsule] = useMutation(CREATE_CAPSULE);
-  const [fileList, setFileList] = useState([]); // State for managing uploaded files
+  const [fileList, setFileList] = useState([]); 
 
   const handleSubmit = async (values) => {
     console.log("Received form values:", values);
@@ -56,7 +56,7 @@ const CapsuleDetails = () => {
     }
   };
 
-  // Function to handle file changes
+  
   const handleFileChange = ({ fileList }) => {
     setFileList(fileList);
   };
@@ -105,16 +105,15 @@ const CapsuleDetails = () => {
             multiple={true}
             fileList={fileList}
             customRequest={({ file, onSuccess, onError }) => {
-              // Handle file upload logic here (e.g., send the file to the server)
-              // You can use Fetch API or Axios to send the file to your server
+             
 
-              // Simulate a successful upload for demonstration purposes
+             
               setTimeout(() => {
                 onSuccess();
                 message.success(`${file.name} file uploaded successfully`);
               }, 1000);
             }}
-            onChange={handleFileChange} // Attach the handleFileChange function
+            onChange={handleFileChange} 
           >
             <p className="ant-upload-drag-icon">
               <InboxOutlined />
