@@ -5,46 +5,50 @@ import { useNavigate } from "react-router-dom";
 
 import { GET_ONE_CAPSULE } from "../../utils/queries";
 
-const DisplayCapsule = ({ onCapsuleClick, username }) => {
-    const { data, loading, error } = useQuery(GET_ONE_CAPSULE);
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>Error: {error.message}</p>;
+const DisplayCapsule = () => {
+ const navigate = useNavigate();
 
-    const { title } = data.capsule;
+ const { loading, data } = useQuery(GET_ONE_CAPSULE);
 
-    return (
-        <Card title={`${title}`} style={{ maxWidth: '800px', margin: '40px auto' }}>
-            <div className="container">
-                <div className="row">
-                    <div className="col-12">
-                        <h2>Display Capsule</h2>
-                        <div className="card">
-                            <div className="card-body">
-                                <h5 className="card-title">Capsule Title</h5>
-                                <p className="card-text">Letter</p>
-                                {/* image */}
-                                <img src="..." className="card-img-top" alt="..."></img>
-                                {/* image */}
-                                <img src="..." className="card-img-top" alt="..."></img>
-                                {/* image */}
-                                <img src="..." className="card-img-top" alt="..."></img>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </Card>
-    );
+ if (loading) {
+    return <div>Loading...</div>;
+ }
+
+ const capsule = data?.capsule || {};
+
+ const handleEdit = () => {
+    navigate(`/edit/${capsule._id}`);
+ };
+
+ const handleDelete = () => {
+    message.success("Capsule deleted");
+    navigate("/");
+ };
+ const handleOpen = () => {
+    navigate(`/open/${capsule._id}`);
+ };
+
+ return (
+    <div>
+      <Card
+        title={capsule?.title} // this is now rendering the title from the capsule
+        style={{ width: 300, marginTop: 16 }}
+        extra={<a href="#">More</a>}
+      >
+        <List
+          size="small"
+          header={<div>Letters</div>}
+          bordered
+          dataSource={capsule?.letters}
+          renderItem={(item) => <List.Item>{item}</List.Item>}
+        />
+        <p>{capsule?.image}</p>
+      </Card>
+      <button onClick={handleEdit}>Edit</button>
+      <button onClick={handleDelete}>Delete</button>
+      <button onClick={handleOpen}>Open</button>
+    </div>
+ );
 };
-
-//defaut props  
-
-DisplayCapsule.defaultProps = {
-    title: "Capsule Title",
-    letter: "Letter",
-    image: "Image",
-};
-
-
 
 export default DisplayCapsule;
