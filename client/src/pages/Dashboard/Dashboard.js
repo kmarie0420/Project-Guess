@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 import React, { useContext } from 'react';
 import { Button, List, Card, message } from 'antd'; // Added 'message' from antd for feedback
+=======
+import React from 'react';
+import { Button, List, Card, message } from 'antd';
+>>>>>>> df5157bf86ee9822cd0bce1d149e4521eaab3154
 import { PlusOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
@@ -16,14 +21,12 @@ const Dashboard = ({ onCapsuleClick, username }) => {
   };
 
   const handleCapsuleClick = (capsule) => {
-    const currentDate = new Date();
+    const currentDate = new Date(Date.UTC(new Date().getUTCFullYear(), new Date().getUTCMonth(), new Date().getUTCDate()));
     const openDate = new Date(capsule.openDate);
-
-    if (currentDate >= openDate) {
-      // If the current date is greater than or equal to the capsule's open date
-      onCapsuleClick(capsule._id); 
+   
+    if (currentDate.getTime() >= openDate.getTime()) {
+      navigate(`/capsule-view/${capsule._id}`);
     } else {
-      // Using antd's message component to display feedback
       message.error("This capsule is not ready to be opened yet.");
     }
   };
@@ -40,11 +43,26 @@ const Dashboard = ({ onCapsuleClick, username }) => {
     >
       <List
         dataSource={capsules}
-        renderItem={capsule => (
-          <List.Item key={capsule._id} onClick={() => handleCapsuleClick(capsule)}>
-            {capsule.title} (Open Date: {capsule.openDate})
-          </List.Item>
-        )}
+        renderItem={capsule => {
+          let openDateTimestamp = parseInt(capsule.openDate, 10);
+          let formattedDate = "Unknown";
+          const openDateObj = new Date(openDateTimestamp);
+          
+          if (!isNaN(openDateObj.getTime())) {
+            formattedDate = openDateObj.toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'short',
+              day: 'numeric',
+            });
+          }
+          
+          return (
+              <List.Item key={capsule._id} onClick={() => handleCapsuleClick(capsule)}>
+                  <strong>{capsule.title}</strong> (Open Date: {formattedDate})<br />
+                  {capsule.contents} {/* letter details */}
+              </List.Item>
+          );
+        }}
       />
       <Button
         type="primary"
@@ -61,4 +79,14 @@ Dashboard.defaultProps = {
   username: 'User'
 };
 
+<<<<<<< HEAD
 export default Dashboard;
+=======
+export default Dashboard;
+
+
+
+
+
+
+>>>>>>> df5157bf86ee9822cd0bce1d149e4521eaab3154
