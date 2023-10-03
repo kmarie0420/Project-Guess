@@ -1,10 +1,5 @@
-<<<<<<< HEAD
 import React, { useContext } from 'react';
 import { Button, List, Card, message } from 'antd'; // Added 'message' from antd for feedback
-=======
-import React from 'react';
-import { Button, List, Card, message } from 'antd';
->>>>>>> df5157bf86ee9822cd0bce1d149e4521eaab3154
 import { PlusOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
@@ -79,14 +74,4 @@ Dashboard.defaultProps = {
   username: 'User'
 };
 
-<<<<<<< HEAD
 export default Dashboard;
-=======
-export default Dashboard;
-
-
-
-
-
-
->>>>>>> df5157bf86ee9822cd0bce1d149e4521eaab3154
