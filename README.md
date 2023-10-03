@@ -4,16 +4,26 @@ Project Guess!
 ## User Story
 
 AS A individual that takes far too many pictures; to hold onto memories
-I WANT to be able to view and manage saved memories.
-SO THAT I can create a personal virtual/digital time-capsule. 
+I WANT to be able to view saved memories.
+SO THAT I can create multiple, virtual/digital time-capsules. 
 
 ## Acceptance Criteria
 
-GIVEN 
-WHEN
-THEN
-WHEN
-THEN
+GIVEN a Virtual Time Capsule
+WHEN I land on the page
+THEN I have an option to either Sign Up or Sign In
+WHEN I `click` Sign Up
+THEN a modal pops up with user registraion
+WHEN I enter the inputed information
+THEN I can Sign In
+WHEN I Sign In
+THEN I am redirected to create a capsule.
+WHEN I `click` Sign In
+THEN it is redirected to another page that creates a capsule.
+WHEN you fill out the text boxes and PHOTO URLs 
+THEN you can `submit` and it saves.
+WHEN the capsule is created and saved, you will redirected to the Dashboard
+THEN you can view all your Time Capsules over the years. 
 
 ## Description
 
@@ -22,11 +32,34 @@ With interactive ways of use. Simple and easy for the user and their family!
 
 ## Installation
 
+Clone the repo: git clone `git@github.com:kmarie0420/Project-Guess.git`
+
+1. Open in VS Code. If you do not have VS code you must install it.
+2. cd in to your project directory
+3. use npm i to install all dependencies
 
 ## Usage Information
 
+As of now the usage of this application can be conducted through spinning up the server with npm run develop, then heading over to an application that populates into the browser using `http://localhost:3000`. 
+For further information on starting up the server, MongoDB Compass and MongoDB installation navigate to the Installation section above.
+Click on the "Sign Up" button to create a new account or "Sign In" if you already have one.
+
+After signing in, you will be redirected to the dashboard where you can view and manage your time capsules.
+
+To create a new time capsule, click on the "Create New Capsule" button on the dashboard.
+
+Fill out the required information, such as title, open date, letter, and upload photos.
+
+Click the "Submit" button to save the capsule.
+
+You can view all your time capsules on the dashboard.
 
 ## Screenshots
+
+*![Alt text]()
+*![Alt text]()
+*![Alt text]()
+*![Alt text]()
 
 ## Images
 
