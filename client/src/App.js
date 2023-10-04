@@ -9,7 +9,7 @@ import Register from "./pages/Register/Register";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import CapsuleDetails from "./pages/CapsuleDetails/CapsuleDetails";
 import UserContext from "./pages/UserContext/UserContext";
-import DisplayCapsule from "./pages/DisplayCapsule/DisplayCapsule";
+// import DisplayCapsule from "./pages/DisplayCapsule/DisplayCapsule";
 
 function App() {
   const [loginModalVisible, setLoginModalVisible] = useState(false);
@@ -33,7 +33,7 @@ function App() {
             onRegisterClick={() => setRegisterModalVisible(true)}
             isAuthenticated={isAuthenticated}
             onLogout={() => {
-              setIsAuthenticated(false);
+              // setIsAuthenticated(false);
               setUser(null);
             }}
           />
@@ -50,10 +50,10 @@ function App() {
                     path="/capsule-details"
                     element={<CapsuleDetails user={user} />}
                   />
-                  <Route
+                  {/* <Route
                     path="/DisplayCapsule"
                     element={<DisplayCapsule user={user} />}
-                  />
+                  /> */}
                 </>
               )}
             </Routes>
@@ -69,11 +69,11 @@ function App() {
               onSuccess={handleRegistrationSuccess}
             />
           )}
-          <DisplayCapsule
+          {/* <DisplayCapsule
             visible={DisplayCapsule}
             onClose={() => DisplayCapsule(false)}
             onSuccess={DisplayCapsule}
-          />
+          /> */}
 
           <Footer />
         </UserContext.Provider>
