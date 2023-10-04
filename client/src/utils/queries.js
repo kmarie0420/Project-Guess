@@ -8,9 +8,7 @@ export const GET_ALL_CAPSULES = gql`
     }
   }
 `;
-
 // get one capsule
-
 export const GET_ONE_CAPSULE = gql`
   query GetOneCapsule($capsuleId: ID!) {
     getOneCapsule(capsuleId: $capsuleId) {

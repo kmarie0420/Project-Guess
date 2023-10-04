@@ -5,7 +5,6 @@ const path = require('path');
 const db = require('./config/connection');
 const { typeDefs, resolvers } = require('./schemas');
 const { authMiddleware } = require('./middleware/auth');
-
 const PORT = process.env.PORT || 3001;
 const app = express();
 const server = new ApolloServer({
@@ -13,31 +12,21 @@ const server = new ApolloServer({
   resolvers,
   context: authMiddleware,
 });
-
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
-
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../client/build')));
 }
-
-
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
-
-
 const startApolloServer = async () => {
   await server.start();
   app.use((req, res, next) => {
     console.log(`[REQUEST]: ${new Date().toISOString()} - ${req.method} ${req.path} - Body:`, req.body);
     next();
   });
-  
   server.applyMiddleware({ app });
-
-  
   db.once('open', () => {
     console.log(`Database connection opened at ${new Date().toISOString()}`);
     app.listen(PORT, () => {
@@ -46,7 +35,4 @@ const startApolloServer = async () => {
     });
   });
 };
-
-
 startApolloServer();
-

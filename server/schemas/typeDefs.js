@@ -18,7 +18,6 @@ const typeDefs = gql`
     getAllCapsules: [Capsule]
     getTimeCapsule(id: ID!): Capsule
   }
-  
   type Mutation {
     login(username: String!, password: String!): User
     registerUser(username: String!, email: String!, password: String!): User

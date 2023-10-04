@@ -3,18 +3,13 @@ import { Form, Input, Button, Modal, Typography, message } from 'antd';
 import { useMutation } from "@apollo/client";
 import { REGISTER_USER } from '../../utils/mutations';
 // import Auth from "../utils/auth";
-
 const { Title } = Typography;
 const Register = ({ onClose, onSuccess }) => {
   const [loading, setLoading] = useState(false);
   const [registerUser, { error }] = useMutation(REGISTER_USER);
-
-
   const onFinish = async (values) => {
     setLoading(true);
-
     console.log('Form values:', values);
-
     try {
       const { data } = await registerUser({
         variables: {
@@ -23,11 +18,11 @@ const Register = ({ onClose, onSuccess }) => {
           password: values.password,
         }
       });
-      
       if (data) {
         message.success('Registration successful');
         onSuccess();
         onClose();
+        navigate('/dashboard');
       }
     } catch (e) {
       console.error('Error during registration:', e.message);
@@ -36,11 +31,10 @@ const Register = ({ onClose, onSuccess }) => {
       setLoading(false);
     }
   };
-  
   return (
-    <Modal 
-      title={<Title level={3}>Register</Title>} 
-      open={true} 
+    <Modal
+      title={<Title level={3}>Register</Title>}
+      open={true}
       onCancel={onClose}
       footer={null}
       centered
@@ -53,7 +47,6 @@ const Register = ({ onClose, onSuccess }) => {
         >
           <Input placeholder="Username" />
         </Form.Item>
-
         <Form.Item
           name="email"
           label="Email"
@@ -61,7 +54,6 @@ const Register = ({ onClose, onSuccess }) => {
         >
           <Input placeholder="Email" />
         </Form.Item>
-
         <Form.Item
           name="password"
           label="Password"
@@ -69,7 +61,6 @@ const Register = ({ onClose, onSuccess }) => {
         >
           <Input.Password placeholder="Password" />
         </Form.Item>
-
         <Form.Item
           name="confirmPassword"
           label="Confirm Password"
@@ -88,7 +79,6 @@ const Register = ({ onClose, onSuccess }) => {
         >
           <Input.Password placeholder="Confirm Password" />
         </Form.Item>
-
         <Form.Item>
           <Button type="primary" htmlType="submit" loading={loading}>
             Register
@@ -98,5 +88,4 @@ const Register = ({ onClose, onSuccess }) => {
     </Modal>
   );
 };
-
 export default Register;

@@ -1,25 +1,21 @@
 import React from "react";
 import { useQuery } from "@apollo/client";
 import { Card, List, message } from "antd";
-import { useNavigate } from "react-router-dom";
-
+import { useNavigate, useParams } from "react-router-dom";
 import { GET_ONE_CAPSULE } from "../../utils/queries";
-
 const DisplayCapsule = () => {
  const navigate = useNavigate();
-
- const { loading, data } = useQuery(GET_ONE_CAPSULE);
-
+ const { id } = useParams();
+const { loading, data } = useQuery(GET_ONE_CAPSULE, {
+   variables: { capsuleId: id }
+});
  if (loading) {
     return <div>Loading...</div>;
  }
-
  const capsule = data?.capsule || {};
-
  const handleEdit = () => {
     navigate(`/edit/${capsule._id}`);
  };
-
  const handleDelete = () => {
     message.success("Capsule deleted");
     navigate("/");
@@ -27,7 +23,6 @@ const DisplayCapsule = () => {
  const handleOpen = () => {
     navigate(`/open/${capsule._id}`);
  };
-
  return (
     <div>
       <Card
@@ -50,5 +45,4 @@ const DisplayCapsule = () => {
     </div>
  );
 };
-
 export default DisplayCapsule;

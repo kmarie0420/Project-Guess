@@ -14,16 +14,17 @@
     "react-scripts": "^2.1.3",
     "seed": "^0.4.4"
   },
-  "name": "re-Memories",
+  "name": "Re-memories",
   "description": "",
   "version": "1.0.0",
   "main": "server/server.js",
   "scripts": {
-    "start": "node server/server.js --ignore client",
+    "start": "nodemon server/server.js --ignore client",
     "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
     "install": "cd server && npm i && cd ../client && npm i",
     "seed": "cd server && npm run seed",
-    "build": "cd client && npm run build"
+    "build": "cd client && npm run build",
+    "watch": "nodemon server.js"
   },
   "repository": {
     "type": "git",

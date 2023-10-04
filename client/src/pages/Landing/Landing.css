@@ -5,7 +5,6 @@
   height: 700px;
   overflow: hidden;
 }
-
 .greeting-text {
   opacity: 1;
   position: absolute;
@@ -14,11 +13,9 @@
   transform: translate(-50%, -50%);
   transition: transform 0.5s ease-out;
 }
-
 .greeting-text.flipGreeting {
   transform: translate(-50%, -50%) rotateY(90deg);
 }
-
 .image-active {
   background-image: url('/public/assets/images/joe-hu-yPyV4GK5bLQ-unsplash.jpg');
   background-size: cover;
@@ -32,11 +29,9 @@
   transform: rotateY(90deg);
   transition: transform 0.5s ease-out;
 }
-
 .image-active.showImage {
   transform: rotateY(0deg);
 }
-
 .overlay-text {
   position: absolute;
   bottom: 10%;
@@ -53,23 +48,18 @@
   font-weight: bold;
   font-size: 24px;
 }
-
 .overlay-text.paragraph {
   transform: translateX(-50%) translateY(0);
   opacity: 1;
   filter: blur(0px);
 }
-
 .image-active.paragraph {
   transform: rotateY(0deg);
 }
-
-
 @media screen and (max-width: 768px) {
   .landing {
       height: 500px;
   }
-
   .overlay-text {
       font-size: 14px;
       bottom: 5%;

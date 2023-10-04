@@ -6,16 +6,13 @@ import { ArrowLeftOutlined } from "@ant-design/icons";
 import UserContext from "../UserContext/UserContext";
 import { Form, Input, Button, DatePicker, Card, Upload, message } from "antd";
 import { InboxOutlined } from "@ant-design/icons";
-
 const { TextArea } = Input;
-
 const CapsuleDetails = () => {
   const navigate = useNavigate();
   const { user } = useContext(UserContext);
   console.log("User from context:", user);
   const [createCapsule] = useMutation(CREATE_CAPSULE);
-  const [fileList, setFileList] = useState([]); 
-
+  const [fileList, setFileList] = useState([]);
   const handleSubmit = async (values) => {
     console.log("Received form values:", values);
     if (!user || !user._id) {
@@ -55,12 +52,9 @@ const CapsuleDetails = () => {
       }
     }
   };
-
-  
   const handleFileChange = ({ fileList }) => {
     setFileList(fileList);
   };
-
   return (
     <Card
       title="Create New Capsule"
@@ -105,15 +99,12 @@ const CapsuleDetails = () => {
             multiple={true}
             fileList={fileList}
             customRequest={({ file, onSuccess, onError }) => {
-             
-
-             
               setTimeout(() => {
                 onSuccess();
                 message.success(`${file.name} file uploaded successfully`);
               }, 1000);
             }}
-            onChange={handleFileChange} 
+            onChange={handleFileChange}
           >
             <p className="ant-upload-drag-icon">
               <InboxOutlined />
@@ -139,5 +130,6 @@ const CapsuleDetails = () => {
     </Card>
   );
 };
-
 export default CapsuleDetails;
+
+// pasted dont touch

@@ -1,5 +1,4 @@
 const { Schema, model } = require("mongoose");
-
 const CapsuleSchema = new Schema({
   _id: {
     type: Schema.Types.ObjectId,
@@ -28,8 +27,10 @@ const CapsuleSchema = new Schema({
     type: Boolean,
     default: false,
   },
+  photoURLs: {
+    type: [String], // Array of strings
+    default: []
+ },
 });
-
 const Capsule = model("Capsule", CapsuleSchema);
-
 module.exports = Capsule;

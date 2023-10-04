@@ -3,27 +3,20 @@ import { Form, Input, Button, Modal, Typography, message } from 'antd';
 import { useMutation } from '@apollo/client';
 import { useNavigate } from 'react-router-dom';
 import { LOGIN_USER } from '../../utils/mutations';
-
 const { Title } = Typography;
-
 const Login = ({ visible, onClose, onSuccess }) => {
   const [loading, setLoading] = useState(false);
   const [login] = useMutation(LOGIN_USER);
   const navigate = useNavigate();
-
   const onFinish = async (values) => {
     setLoading(true);
     console.log('Form values:', values);
     try {
       const { data } = await login({ variables: { ...values } });
-      console.log('Login Response:', data); 
-      
+      console.log('Login Response:', data);
       if (data.login && data.login._id) {
-        console.log('Login Successful, User Data:', data.login); 
-        
-        
+        console.log('Login Successful, User Data:', data.login);
         onSuccess(data.login.username);
-        
         message.success('Login successful');
         onClose();
         navigate('/dashboard');
@@ -38,10 +31,9 @@ const Login = ({ visible, onClose, onSuccess }) => {
       setLoading(false);
     }
   };
-
   return (
-    <Modal 
-      title={<Title level={3}>Sign In</Title>} 
+    <Modal
+      title={<Title level={3}>Sign In</Title>}
       open={visible}
       onCancel={onClose}
       footer={null}
@@ -71,5 +63,4 @@ const Login = ({ visible, onClose, onSuccess }) => {
     </Modal>
   );
 };
-
 export default Login;
